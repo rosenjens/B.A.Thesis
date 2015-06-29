@@ -1,0 +1,397 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage[british]{babel}
+
+\renewcommand*\contentsname{Table of Contents}
+
+\title{Mid-air typing for whole-hand input in three dimensions}
+\author{Jens Rosén \\ Jens.Rosen.3447@student.uu.se}
+\date{\today}
+
+\begin{document}
+
+
+\maketitle
+\thispagestyle{empty}
+
+\pagebreak
+\tableofcontents
+\thispagestyle{empty}
+\pagebreak
+
+%proprioception
+
+\section{Introduction}
+\setcounter{page}{1}
+The keyboard plays a significant role in the human-computer interaction (HCI). Computer users are often custom to common sets of input and output devices such as keyboard, mouse and monitor. Many modern operating systems use a window icon menu pointer (WIMP) user interface, setting a standard of how to interact with computers. 
+
+The keyboard and mouse are the main input devises when using a computer. When it comes to typing text the main alternative is the keyboard and it has now been a part of the human-computer interaction for a very long time, where it plays a central role.\cite{20043dui} Nevertheless, it is not always convenient to use a physical device for inputting data.
+
+Sometimes it would be rather practical to use other ways to enter text without touching a physical keyboard, where a mid-air way of entering data would be really handy. One application area from the everyday life would be while a person is cooking or baking and needs to look up a recipe on the computer, with grease or dough all over the hands.
+
+The first typewriters had keyboards with keys ordered alphabetically.\cite{website:ne:tangentbord} During the 1870's the keyboard layout for typewriters started to be dominated by the qwerty, which was developed to increase typing speed, by considering the mechanic limitations of the early typewriters.\cite{website:ne:tangentbord} Since then the qwerty layout has been the standard and was later adapted to the computer keyboard. Some attempts has been to change the layout (e.g. Dvorak) but none has really taken the place of qwerty.
+
+The aim of this report is to propose a method for horizontal text input based on the qwerty keyboard layout for the Leap Motion Controller. An interesting aspect of the problem is if the feedback that is provided to the user is sufficient and if the Leap Motion Controller can provide adequate data for this task. 
+
+The questions for this thesis are: 
+\begin{itemize}
+  \item Can a horizontal keyboard provide sufficient writing speed?
+  \item Would it be possible to create a qwerty layout keyboard with the Leap Motion Controller?
+\end{itemize}
+
+\pagebreak
+
+\subsection{Project Background}
+The material for this thesis comes from the company Spree AB, referred to as Spree. One problem they came across when using the Leap Motion Controller was how to enter text when using the device without turning to the keyboard. They were curious if it could work as a keyboard, and if the idea of a keyboard would make sense.
+
+Spree's main objective is to find out in what extent the Leap Motion Controller can produce text input. The goal would be to get a deeper understanding in how the hands are recognized by the Leap Motion Controller and how it could be used to determine if a key is pressed or not. 
+
+\subsection{Limitations of project}
+This thesis does not aim to implement other keyboard types than the Swedish qwerty layout, nor does it tend to make a comparison between different keyboard types. That is, not aiming to determine if there is a better keyboard layout than a horizontal qwerty for the Leap Motion Controller or compare it with other suggested layouts. 
+
+It would be possible for algorithms to auto correct text that has been written. But implementing or analyzing different auto-correcting techniques are outside the scope of this thesis. The study will only focus on the program to work on one operating system and will not take in to consideration that it should work on all Leap Motion Controller supported platforms.
+
+\subsection{Disposition}
+This thesis is written to a reader that has at least a basic knowledge in mathematics and computer science at Bachelor level.
+
+Section \ref{theback} goes through a theoretical background in the field of three dimensional input. It aims to give the reader a foundation to the topic of this thesis. The main focus for this section concerns hand-to-computer interaction, but also introduces the reader to a more general idea of three dimensional input. Furthermore some relevant concepts in the field are explained, and related work to this thesis are discussed.
+
+The thesis then continues in Section \ref{projover} with a description of the project itself. The first part concerns a more details description of the Leap Motion Controller and the Application Programming Interface used with the device. The section end with a general idea for the implementation for a virtual qwerty keyboard.
+
+In Section \ref{impl} the implementation of the project is presented to the reader. This section contains information on how a keystroke is detected, the layout of the keyboard and how feedback is presented to the user. 
+
+Then the project is tested and evaluated in Section \ref{testev}. In this section the proposed keyboard is examined and the result from a test is discussed. The thesis ends with a conclusion and the questions asked in the beginning are answered.
+
+%\pagebreak
+\section{Theoretical Background}\label{theback}
+This section aims to give a foundation to the field of three dimensional interaction. Focus mostly lies on interaction where the hand is used as input, but a general idea of three dimensional input is as well presented to the reader.
+
+\subsection{Human-Computer Interaction in three dimensional space}
+Human-Computer Interaction (HCI) defines the communication between a user and a computer system. Humans and computers do not speak the same language and therefor they need a way be able to communicate with each other. The interface in between is acting like an interpreter uniting these two. 
+
+It has now for several decades been the standard that interaction with the computer mostly has been through the use of a mouse and keyboard.\cite{05489218} When it comes to interacting and navigating in a three dimensional space the traditional mouse and keyboard can be hard to use. A more appropriate way to deal with this task would be to use another kind of input device. One solution would be to use a three dimensional user interface. This would allow the user to perform the input in three dimensional space by using e.g. direct hand motions.
+	
+The research on three dimensional interaction began in the 1960's.\cite{20043dui} Even if the research in this area began more than a half century ago the keyboard and mouse still has a strong position. Hand motion, mentioned above, is one way of doing three dimensional interaction, nonetheless there are many researched ways of interact with computers through three dimensional space. 
+%Interacting through hand motions is one way for HCI, nonetheless it is not the only way of interact with computers through three dimensional space. 
+
+One method of comparing three dimensional input devices is to compare the use of degrees of freedom. This is a measurement of the number of parameters that a system can use to acquire information. Devices with low degree of freedom are the keyboard, mouse and joystick. They are designed for two dimensional input and work well with standard window icon menu pointer user interfaces, but for three dimensional input they are less suitable.\cite{20043dui} The lack of degrees of freedom makes it harder to navigate in a interface with a extra dimension.
+
+
+The human hand is very complex and can be used as an advanced input device that opens up for great control of the computer. When the palm is able to move freely, the whole hand has 29 degrees of freedom.\cite{Sturman1992}
+%If the palm is able to move freely in space, there are in the whole hand 29 degrees of freedom.\cite{Sturman1992} 
+Thus, the hand is very complex, but this can also be a disadvantage when used as input. All the joints and movability in the hand makes it hard to track. There are as much as 23 degrees of freedom just in the fingers. However, when using the hand as input source it does not mean that the full potential of degrees of freedom needs to be used. A simpler task would be to use the orientation of the hand in space as input, making use of only three degrees of freedom. 
+
+Gestures are another way to use the hands for HCI. %Using gestures in HCI could be an more natural way of communicating with computers. 
+Zhou Ren et al.\cite{rhgrwks} think that hand gestures are a more natural way for humans to communicate with computers. This is  because of how it resembles the way humans interact with each other. The term of ``natural user interface'' is used in their paper. Others like Donald A. Norman claims, in his text \textit{Natural User Interfaces Are Not Natural}\cite{p6-norman}, that most gestures are not natural and nor are they easy to memorize, which is a negative consequence of gestures. But Norman is not all opposed towards gestures and think that they eventually will find their place in HCI. 
+
+The thought of naturalness is that there are some methods that are more natural to the human mind, like hand movements and gestures.
+%The thought of naturalness is that hand movements and gestures would be more natural to the human mind. 
+Naturalness is aspiring to be a intuitive way of interacting with computers. This would refer to a natural way of doing things, what first comes to our minds, and a way of direct control with unobstructed peripheral.
+
+According to Doug A. Bowman et al.\cite{20043dui} some of the factors that must be taken in consideration when choosing an input devise to use with a three dimensional user interface, is the ergonomics and the type of tasks that will be performed. The ergonomics is an important consideration. A user should not have to be exposed to difficult situations in which the body can be injured or where the user chooses not to carry out a certain task because of poor design.
+
+\subsection{Three dimensional input techniques}
+There are various techniques that can be used for communicating with a computer through three dimensions. Different devices can be beneficial for various tasks. %%Lägg till något om att här kommer tre tekniker....
+
+\paragraph{Camera-based input}
+Camera-based systems use a camera image to determine positions in three dimensional space. One way to detect the position of objects is to use markers, either LED lights or coloured spots. For example, markers of different colour can be attached to the fingers tips and the device can then distinguish between the fingers more easily. 
+
+Then there is the marker free approach, where there are no fixed points in the image to look for. This gives the user a system that can be used straight away without any preparation, and the user is not obstructed by peripheral. A disadvantage when using a camera-based input device is that line of site is needed to determine good positioning.
+
+Microsoft Kinect is a system that uses marker free camera tracking of the human body. This system uses an infra red laser and an infrared camera to measure depth, and then an additional colour camera.\cite{06290794} The two cameras work together to make a three dimensional image of the environment in front of it. The resolution on the Kinect is quite small, around 640 $\times$ 480 typically\cite{06470686}, giving it an disadvantage when trying to track smaller objects like fingers at distance. Kinect is better at tracking bigger body parts.
+
+The Leap Motion Controller, that is used in this thesis, is also a camera based device that uses three infra red lights and two infra red cameras to capture images of the hands. More about the Leap Motion Controller in section \ref{leap}.
+
+\paragraph{Glove-based input}
+Gloves can be used to track the position and motion of the hands. Using gloves to tracking the hands has been researched for several decades now.\cite{Sturman1992} Many kinds of glove-based devices have been developed for tracking hands. This type of device is more of an mechanical device that determines the hands position in three dimensional space. For example, has gloves have been used, with good result, for tracking sign languages.\cite{out}
+
+Gloves can give a high precision in positioning and are not as much affected by its surroundings as a camera system. This usually makes gloves a more reliable system to use.\cite{06470686} Background noise or the lighting in the room do not hinder the glove from pointing out an accurate position. On the negative side, when using a glove the glove itself can interfere with the user from performing natural gestures. Wearing a glove makes the user not as free as a camera-based system, of course depending on the design of the glove.
+
+%Gloves, with a high precision in positioning, can ensure a more reliable system compared to camera-based systems where the use of cameras can be of disadvantage.\cite{06470686} 
+%Another advantage is that it is not effected by the surrounding, background noise or the lighting in the room do not hinder the glove from pointing out an accurate position. The negative side of using a glove is that the glove it self can interfere with the user from performing more natural gestures. Wearing a glove make the user not as free as a camera-based system, of course depending on the design of the glove.
+
+David J. Sturman writes about several gloves in his article \textit{A survey of glove-based input}\cite{sturmanASoG}. An early glove was the Sayre Glove that was developed in the 1977, which is a lightweight glove based on light passing through tubes along the fingers. When the fingers is being bend less light passes through, and measuring the light can determine how much the finger is being bent.
+
+\paragraph{Accelerometer-based input}
+Similar to the glove-based systems, acceler\-ometer-based systems are something that needs to be worn on the body. Accelerometers measure the changes in speed and direction, and can there by determine how objects are moving. A product that uses accelerometer for HCI is the Nintendo Wii remote.\cite{out}
+
+\subsection{Application area}
+There are many areas that could benefit from three dimensional input, especially where there is a need for more complex input methods. David Joel Sturman\cite{Sturman1992} brings up an example of unfriendly environments. There manually controlled robots could be used instead of humans.
+%David Joel Sturman\cite{Sturman1992} brings up the example of unfriendly environments were manual controlled robots could be used. 
+In highly radioactive areas or deep down in the sea it is dangerous and expensive to send humans and instead robots can be used. If the robots are manually controlled it will require a high degree of freedom to be able to carryout complex tasks and in turn requires complex input, something that the hands can provide to the system. Keyboards and mice would not be suitable for these kind of complex tasks.
+
+Mid-air interaction can also improve areas of where the user would not want to touch a surface for hygienic reasons. Cash machine, where many people touch the same surface with their hand is a perfect place for bacteria and disease to transmit between people. The use of mid-air interaction would prevent direct contact with any infected area and could still be sufficient to use. This would decrease spread of disease.
+
+A three dimensional keyboard could be used together with other three dimensional applications where the user has to enter text. Instead of having the user change between a physical keyboard and other devices when entering text, the user would be able to use one device for all the computer interaction. 
+
+This kind of keyboard would also be rather practical within the health care. A dentist could use a way to input medical data while working with a patient, and would be able to easily turn back and forth between the patient and the computer without sterilizing the hands. 
+
+Computer games is another area that could benefit a lot from making users feel more physically interactive and involved in the game. Particularly virtual worlds could be an interesting application area. An obvious use of three dimensional input is for computer animation and modeling of the body. 
+
+\subsection{Challenges with three dimensional input}
+
+Three dimensional interaction can be difficult. The following subsection will present five areas of challenges associated with three dimensional input.
+
+%Three dimensional interaction is difficult and there are many challenges associated with three dimensional input. The keyboard and mouse are the two most common input devices and have been used in human-computer interaction for several decades. They are reliable tools in the interaction with computers. 
+	
+A first challenge to figure out is whether an application would benefit from a three dimensional input at all. Not all applications can make use of more dimensions. To just apply three dimensional input on any system that today uses keyboard or mouse would be waste of resources. %Maybe it just means that the current system is cumbersome and must be reinvented to easier handle the human body as input.
+
+Challenging for all type of input is the need for reliable responsiveness. A system needs to be quick and responsive, and particularly in a system where you use body motions as input. When using a three dimensional input device, delay can have an big impact on the result and greatly affect the accuracy.\cite{p36-herndon}
+
+\paragraph{The device}
+Different devices are suitable for different tasks. A glove-based device can be more uncomfortable to use than to use a motion tracking with a camera, but the trade-off could be more reliable data. For example a camera device can have the problem of seeing all the fingers at all times. A object that is not in the line of sight of the camera will be problematic to use as input, e.g. one finger can intersects another and be hidden from view. Huan Du et al.\cite{paper} suggests that a solution to this particular problem for camera devices would be the use of a more complicated model and that lost or hidden information should be approximated.
+
+\paragraph{Ergonomics}
+The comfort and the effects a system has on the human body is an important factor to consider. Using a three dimensional input device, where the user need to interact by holding their arms in the mid-air, require more active muscles than interacting with a conventional mouse and keyboard.\cite{p2473-ni} 
+When this interaction occurs for a longer time it can be experienced discomfortable and can have negative effects on the human body. 
+%It is not natural to hold the hands up high for a longer time and can have negative effects on the human body. 
+%This can be discomfortable during longer use. 
+Movements and gestures that require high precision can also be inconvenient to use, especially when this movements are to be done over longer period of time.\cite{p28-baudel}
+
+When designing a user interface it is important to have the ergonomics in mind and think of the human needs and circumstances. Many repetitive motions in a user interface can be discomfort and cause injuries and should be avoided.\cite{Sturman1992} 
+
+
+\paragraph{Degrees of freedom}
+The human body is flexible and can move in many different ways, this resolves in a lot of degrees of freedom. Just considering the hands, that through its anatomy of bones can create complexed movement patterns, allows for great mobility and many degrees of freedom. A high number of degrees of freedom can be challenging to take advantage of and does not necessary correspond to that best choice of every task.
+
+The use of more degrees of freedom than the task requires can be con\-fusing.\cite{p36-herndon} %The use of higher degrees of freedom for tasks with lower degrees of freedom can be confusing.\cite{p36-herndon} 
+Some tasks may require some sort of reduction on degrees of freedom to be helpful to the user.\cite{Sturman1992} Hence, managing a window icon menu pointer user interface does not benefit from many degrees of freedom that for example the hand can provide. In this sense mouse and keyboard are a better choice, that are design with at most two degrees of freedom. 
+
+The precision of pointing is lower when using a device with more degrees of freedom than needed.\cite{p2473-ni} 
+%When pointing in a three dimensional user interface the precision is lower  when using a mouse in the same situation.\cite{p2473-ni} 
+This is due to the problem of using to many degrees of freedom and the problem of keeping the body still. When moving a finger in 3D space it is hard to not move the finger in more than one axis, which makes it hard to use the hand for more precise movements that the mouse otherwise can do.
+	
+Problems can also occur when using a device that have less degrees of freedom than the task that the user wants to perform.\cite{p36-herndon} It can be hard to interact in an three dimensional environment with only a two degrees of freedom input device. This can lead to more complicated interaction than it would have been with a device with three degrees of freedom, that can directly interact in three dimensional space.
+
+\paragraph{Feedback}
+Feedback could be divided into three categories: visual feedback, tactile and kinesthetic feedback and auditory feedback. This corresponds to the three types of responses a computer is able to produce when communicating with a human.
+%This correspond to the three types of information that the communication with a computer is capable of producing to a human.
+
+Humans use forces, like friction and gravity, to simplify movements and interaction with objects.\cite{p36-herndon} With just the hands as information source the human body has the possibility to experience structure even in the smallest things.\cite{website:ne:hand} When interacting with virtual object the physical response is reduced and the interaction made much harder. It is then important to give the user other suitable feedback to be able to perform the task at hand.
+%It is important to give the user suitable feedback for the task at hand. 
+
+When using a physical keyboard the user gets all three categories of feedback. Visually, the user sees what is written, tactile and kinesthetic feedback through the fingers when feeling the keys on the keyboard, and last auditory feedback, when pressing a key it makes a sound. All this feedback helps the user writing on a keyboard, and makes it more effective to use. 
+
+When using just a camera-based system for input its hard or impossible do give any tactile feedback. Then the feedback that can be given to a user is limited to visual and auditory feedback. Seizing hold of virtual object that are in the mid-air can be a very challenging task without any tactile feedback.
+
+Genetically humans are made to respond to visual movement and sound by looking towards the moving object or the source of the sound.\cite{p36-herndon} Visual and auditory feedback can not replace tactile feedback. Nevertheless, different tasks require different feedback for a good result. For a mid-air keyboard the question is whatever it is possible to develop a keyboard with the feedback that can be provided. 
+
+When dealing with gestures, a problem would be to determine between an active action and when a movement is not intended to be a gesture. The user could perform a random action that should not be read as a gesture to the system.
+
+
+\paragraph{Naturalness}
+Three dimensional input would give the user a feeling of being more in direct control over the computer. With one small movement of the hand the user would be able to control the whole computer. This would be a more natural approach than using a intermediate device, like the mouse. A problem that then arises is when the system need to be natural for everyone. 
+
+The difference in culture, age or education could mean that people in one group think that one approach is obvious, but it is not clear for another group. An example of a misunderstanding that could occur is that nodding the head means yes for some people and no for others.
+
+
+\subsection{Text input methods for tree dimensional user interfaces}
+
+There are several methods that can be used to write text on a computer, and the area of text input is much researched.\cite{chp3A10} Different kinds of approaches to text input have different benefits depending on how they are used. One effective way of typing on one device can be very ineffective on another. All devices have different specifications that determine what method will work best. 
+
+A physical keyboard can be used without looking at the keys, just through the tactile and kinesthetic feedback can a skilled user type. Nevertheless, when using a mobile phone with a touch keyboard, or other devices with a touch screen, visual attentiveness is needed. There are however applications that try to reduce the visual need on mobile touch screens. One example is Fleksy\footnote{http://www.fleksy.com \cite{web:fleksy}}, that function as a qwerty keyboard and use an advanced prediction engine, with the benefiting of increased typing speed. 
+
+Three dimensional space invites to take advantage of the extra degrees of freedom the it permits. To just adapt conventional ways of typing is maybe not the way to go. Text input in three dimensional space can perhaps benefit from a more effective approach. One method of typing that could be better is gesture-based technique. TiltType\cite{tilttype} and GesText\cite{p2173-jones} are two devices that use accelerometers to write text with gestures. GesText could during tests produce words at a rate of 5,4 words per minute (WPM). On a conventional keyboard a skilled professional typist can produce speeds up to 120 WPM, and a two-finger typist writes at a speed around 20-30 WPM.\cite{ayres2005120}
+
+To ease the step for learning how to use three dimensional human-computer interaction, one way would be to make text input similar to typing on a physical keyboard. It would make it easier for users if they recognize how to type. Nevertheless, three dimensional user interfaces adds another spectrum to typing and traditional typing that is based on techniques from keyboard, mouse or pointer may not be suitable to adapt.
+
+One method, that is close related to keyboard input, is the pointing, or selection-based techniques where the user select letters by pointing on the symbol they want to select. Here different keyboard layouts can be used for the comfort of the user. The straight forward approach is to arrange the letter in a two dimensional plain in a qwerty order. Letters can also be arrange in a more advanced order that uses the potential of three dimensions better.
+
+Tests have though shown that the use of letters on a flat surface gives a better performance compared to symbols ordered in a cube in three di\-mensions.\cite{chp3A10} This may be the result of users being more familiar to the more conventional layout than the new cube approach. Another aspect is that when moving the hand freely in space the precision of pointing is lower.\cite{p2473-ni}
+
+A different method is to let the user write the letters in mid-air like writing on a piece of paper or a blackboard. Alexander Schick et al.\cite{sp202-schick} propose a system for handwriting recognition that they can use with an accuracy of 86\%. It uses cameras to track the users hands and does not rely on markers or other sensors to be attached on the hands. Users did complain about the low typing speed but no value for words per minute was mentioned.
+
+Yang Liu et al.\cite{01578696} proposes a text input system for wearable computers were the user writes a letter with the fingertip. They suggest that a normal keyboard is not convenient for wearable computers and test the Graffiti 2 alphabet with a promising result.
+
+Another paper that proposes a way for text entry is written by Tayfur Coskun et al.\cite{coskun2012APCHGestyboard}, where the user should use all ten fingers for text input. The method is based on the qwerty layout but instead of mapping a keyboard, gestures for individual finger are used. By tapping and then sliding the finger in different ways different letters and symbols are possible. The idea is to use this approach on multi-touch devices but would maybe be suitable even for mid-air typing as well. 
+
+\subsection{Related work}  \label{rel}
+This section aims to do a survey of previous work in the field of text entry in three dimensional space. There are several papers on the subject of typing in mid-air. The approach to text entry in three dimensional space come across as different depending on what device is used to interact with the computer. This field deals with an interesting problem that has been addressed by many researchers.  
+
+Some of the papers use devices that are commercial e.g. Microsoft Kinect and their SDK. \textit{Mid-air text entry methods}\cite{barbanik.2014dipl} a thesis from 2014 has studied five different approaches to mid-air typing using Kinect. First a vertical keyboard with qwerty layout that uses Microsofts integrated push function to press a key. Then a circular keyboard, where the user selects a letter by rotating a pointer to the right position with one hand and selecting it with a gesture. Two of the methods are based on the same idea, where the user select from three sets of letters, like T9, and then pattern matching to words. The last approach is with developing an 8pen system.
+
+Large wall displays are an area where mid-air keyboard would be beneficial. Garth Shoemaker et al.\cite{p231-shoemake} wrote a paper presented in 2009 about text input techniques for large displays where they compare three methods: circle, qwerty, and a cube keyboard, which use a hand held device. Their result was the the qwerty keyboard was faster at producing words, a rate of 18,9 words per minute, and had fewer errors. They drew the conclusion that a qwerty keyboard would be good way of doing text input on larger screens.  
+
+Another paper the deals with the problem of typing on large displays is \textit{Selection-based mid-air text entry on large displays}\cite{chp3A10} from 2013. Anders Markussen et al. propose three different sets of input methods to compare: H4 Mid-air, based on a method for game control text input; MultiTap, based on how the phone is used for typing with nine keys; and a projected qwerty keyboard, a keyboard projected on the screen. H4 Mid-air and MultiTap are designed so they can be used without visual feedback. They found that the most successful method was the projected qwerty keyboard with an average writing speed of 13,2 words per minute. 
+
+Taichi Murase et al.\cite{p9-murase} propose in their paper from 2011 a virtual qwerty keyboard using one camera to detect key presses. Keys are correlated with fingers and one finger corresponds to more the one key. The keyboard tries to determine depth to determine which key was pressed.
+
+For the Leap Motion Controller there are a few applications that can be used for typing. One is the DexType\footnote{http://www.dextype.com \cite{web:dextype}}, where the letters are ordered into a single line on the bottom of the screen. Typing is done by using the fingers as pointers on the screen and writing is like playing a piano. ASETNIOP\footnote{http://www.asetniop.com \cite{web:asetniop}} is a chord keyboard that can be used with the Leap Motion Controller. The fingers represent keys and are used to make combinations. An advantage for this type of keyboard is that the placement of the fingers in mid-air does not matter. A disadvantage on the other hand is that the user has to learn a new way to type.
+
+%\pagebreak
+\section{Project Overview}\label{projover}
+This section contains a proposal to a horizontal keyboard based on the qwerty keyboard layout for the Leap Motion Controller. 
+
+\subsection{The Leap Motion Controller} \label{leap}
+The Leap Motion Controller is a small USB device that detects and tracks hands, fingers and tools for pointing, like a pencil. To use the device no sensors or markers on the hands are needed. The device consists of three infra red LED lights, the light of which is reflected of object above the device and captured by two infrared cameras. It produces monochrome images that are analyzed to detect hands, fingers, and tools.
+
+Objects in the visual field of the Leap Motion Controller can be seen in the range of 25 to 600 millimeters above it. It uses the two cameras to produce depth and a three dimensional view. The field of vision that the Leap Motion Controller can see can be described as a cone like view with its tip pointing at the device. 
+%The area that it can see can be describe as cone like view with its tip pointing at the device.
+
+A right-handed Cartesian coordinate system is use to determine positions, where the origin is placed at the center of the device itself. Distances are measured in millimeters. The x-axis is running parallel with the longer side of the device and moving an object to the right of the device will increase the x-value. The z-axis goes perpendicular to the x-axis in the horizontal plane and the z-value is decreased by moving the hand forward. Both the x- and z-value can be negative, but the z-value can only be positive. The y-axis is vertical to the Leap Motion Controller where the zero point is on top of the device. 
+
+For the Leap Motion Controller to detect hands, fingers and tools they must be visible for the controller to recognize them and to be able to give objects a accurate position in space. This could be an issue when it is important to get input from all fingers all the time. When fingers move close to each other or are hidden from view they disappear from the system. This could lead to that a hand does not always have five fingers and it is possible for a hand object to have just one or no fingers at all.
+
+The Leap Motion Controller can also track gestures, like swiping movements or a finger drawing a circle. The measurements the system uses is: microseconds for time; millimeters for distance; millimeters per second for speed; and the angles are measured in radians.
+
+%%
+\subsection{Application Programming Interface overview}
+The Leap Motion Controller and its software does the image processing, and through the API it is possible to get information about hands, fingers and tools that the device has recognized. Leap Motion has developed support for several programming languages, C++, C\# and Unity, Objective-C, Java, Python, JavaScript. This thesis focuses on the Objective-C API.
+
+The Leap Motion Controller provides data through the API as sequences of frames. A frame is a representation of what the device has observed at a specific moment and contains data of what has has been tracked. To get the latest frame it is possible to ask the system for it. It is also possible to let the system proved information when a new frame is available.
+%To get a frame it is possible to ask for the latest frame or the system can provide information that there is a new frame. 
+
+A frame object consists of lists of the observed fingers, hands, tools and gestures. When a developer is in no need to distinguish between tools and fingers it is possible to use a pointables list, that includes all finger and tool objects in that frame. Hand objects represents a hand detected in the Leap Motion Controllers field of view. The hand object consists of information e.g. palm position, palm velocity, rotation, direction, a set of fingers, and tools held by the hand. 
+
+A pointable is defined as a finger or tool detected by the Leap Motion Controller, and has variables like length, position of the tip, and velocity of the tip. Both fingers and tools are classified as pointable objects, but it is possible to determine which is which through function calls \texttt{isHand} or \texttt{isTool}.
+
+When a gesture is recognized by the Leap Motion Controller, the system adds the recognized gesture to the current frame. For gestures that occur during several frames the gesture will continue to exist in the gesture list with updated values. Other gestures that only occur during one frame will only exist in that frames gesture list. 
+
+For the Leap Motion Controller it is also possible to use an interactionBox, that is a rectangular cuboid that is inside the Leaps field of view and provides normalized coordinates relating to the cuboid. This could be beneficial when mapping coordinates to drawing on a screen.
+
+\subsection{The virtual qwerty keyboard}
+Basically, typing is a movement and rotation of the hand to a specific target, where the movement involves the whole-hand and all its fingers.\cite{1264.full} Typing is a sequence of keystrokes. A individual keystroke can be seen as a movement to a target that can be modeled by Fitts's law.\cite{p91-zhai} The keystroke can the be divided into tree steps: moving to the key; pressing the key; and returning to the originated position.\cite{1264.full} 
+
+To have a completely fixed keyboard could be problematic because while holding the arms and hands in mid-air they tend to drift.\cite{chp3A10} Holding ones hands static in the air for a longer time can also be painful for shoulders and arms and be bad for the user. Consequently having a stationary keyboard is a bad idea and could mean that the users is either too far away or pressing more keys than intended. The solution where measuring the speed of the fingers lets the user choose at what hight to write and be allowed to drift horizontally with the hands and still be able to type. 
+
+The small size of the Leap Motion Controller makes it easy to carry around. Connected to a device with at tiny keyboard or with a small touch screen it would be possible to enjoy the comfort of a full sized keyboard.
+
+\paragraph{Layout}
+The keyboard for this thesis is based on the qwerty layout, so users can take advantage of their learned way of typing. Most who use a keyboard today use it with a qwerty layout and are therefor acquainted with that style of writing.\cite{p91-zhai} In section \ref{rel} Related work the thesis of Barbariyskiy\cite{barbanik.2014dipl} is cited, suggesting that qwerty is a good layout to use. The design will try to mimic a physical keyboard as much as possible.
+
+This thesis does not however aim to determine if there is a better keyboard layout for the Leap Motion Controller or compare it with other suggested layouts. The qwerty layout may not be the most suitable for typing with the Leap Motion Controller but its wide spread makes it a good starting point when researching keyboards for three dimensional interaction. One better way of typing could be the a chord keyboard suggested in \cite{00017378}.
+
+One possible explanation for that the qwerty layout gets better result in tests is that the learning curve is less steep. Using the qwerty layout there is no need for extensive learning curve. With that in mine, an alphabetical ordered keyboard would also work, but using a layout the user is comfortable with and knows without thinking about it is a better way to go. A user that is not so comfortable with the qwerty layout will not be able to benefit from that layout being implemented with a virtual keyboard and would therefor be better of with another design. 
+
+One problem with a virtual keyboard is the feedback to the user, not everyone is used to typing without looking at there hands. To make it easier for the user and have a better chance of people using the keyboard, the aim should be to minimize the cognitive load.\cite{p91-zhai} 
+
+\paragraph{Feedback}
+Without feeling (or seeing) the key under the fingers the user has to imagine a keyboard floating around in the air. Writing or even moving the hands in the mid-air lacks tactile and kinesthetic feedback. This is a big issue because writing on a keyboard depends so much on feeling the keys. Using a physical keyboard it normally requires a good tactile feedback to the user.%[?]
+
+When typing in the mid-air there is a lack of tactical feedback and the user has to rely on other feedback that is provided, like visual and sound. 
+
+%\pagebreak
+\section{Implementation} \label{impl}
+The keyboard was implemented using the Leap Motion SDK in Objective-C on a MacBook Pro with OS X. The detection of hands, fingers and tools is all done by the Leap Motion software. There is no way of getting the raw image data and doing the calculations yourself. 
+
+The keyboard is implemented with using only the english letters, the spacebar and backspace. Because the modifier keys has been subtracted the user can only produce lower case letters.
+
+\subsection{A Keystroke}
+For each \texttt{LeapFrame} there is a list of pointables that the Leap Motion Controller has acknowledged. When the device finds a finger, it does not track all the joints in the fingers and therefore it is not possible to take advantage of the hands full potential regarding degrees of freedom. For the keyboard in this thesis the idea is that both fingers and tools could be used as input and consequently be able to make a key press. In the implementation, the \texttt{LeapPointable} class is used. 
+
+The idea is that the user should be able to type on the keyboard at any hight in the range of the Leap Motion Controller. There should not be a certain virtual surface to touch, like a horizontal plane 200 millimeter above the device. The keystrokes are instead detected using the vertical velocity. Every pointables tip is monitored and if it exceeds a certain velocity it is considered a key press. This is done with the \texttt{tipVelocity} method in the \texttt{LeapPointable} class. 
+
+When typing on a keyboard it is most likely that just one key is pressed at a time. Nevertheless moving one finger in mid-air, due to the physical characteristics of the hand, makes other fingers move at the same time. To make up for this, only the fastest moving finger or tool is selected as the one doing the key press. In \cite{1596.full} they found that in the moment of the key press, in a typical case, the velocity of the fingers does not depend on the average rate of typing. 
+
+\[
+\begin{array}{ccc}
+p_{max} &=& \max \big\{ x \mid x  \in P \wedge v(x) \geq t \big\}
+\end{array}
+\]
+
+The pointable $p_{max}$ is selected from the set $P$ of pointables with threshold $t$ and velocity function $v(x)$. If no pointable exceed the threshold the variable is set to \texttt{nil}.
+
+Measuring the velocity of the tip has the benefit that different ways of typing can be used. E.g. both writing with whole hand movements, in a drumming way, and writing with just finger movements will be detected by the application.
+
+When the threshold is exceeded the position of the finger or tool tip is registered and further movement of the finger or tool does not effect the keystrokes position in space. This will make it more accurate to the position the user wants to press. A finger gesture will not move in a straight vertical line towards the key during a keystroke. If the key press would occur at the end of the key press motion, the starting point of the movement could be above another key than the pressed key. This could have an effect in how the keyboard performs and is perceived by the user.
+
+This approach is some what of a naive solution where fast movements of the hand can be interpreted as keystrokes even if the intention was not to type anything. 
+
+During a key press no other key can be pressed. The key is released when the pointable velocity drops below a lower threshold. A second key press motion could begin before the first has ended.\cite{1596.full} This would make the positioning not as accurate as if the key press was registered in the key press gestures beginning.
+
+To determine if and what key was pressed the pressed coordinates are compared to the key objects in the \texttt{Keyboard} class. A keyboard object consists of keys, the keys them self have their position and size. If the coordinate of the keystroke are placed inside a keys boundaries the key is defined as pressed. If a key is found, the system sends a keyboard event to the operating system and if not, nothing happens. 
+
+\subsection{The keyboard} \label{leapKeyboard}
+The keyboard consists of the letters in the english alphabet ordered in the qwerty layout and two keys to help with writing, spacebar and backspace. To make it as close as possible to writing on a physical keyboard the size of the full virtual keyboard tries to adapt the size of a normal laptop keyboard. 
+
+A key consist of six variables: the position in the horizontal plane; two size variables, height and width; the \texttt{CGKeyCode}; the string that should be label on the key; and a boolean variable telling if the key is being pressed. All the keys have the same size 19 $\times$ 19 millimeter except the spacebar and backspace that have the same hight but are 114 as well as 38 millimeters wide. The padding in-between the keys is set to zero in order to help the user not to press in the margins and instead the press should resolve in a keystroke.
+
+The rows of keys are shifted to give it the characteristics of a keyboard \cite{website:ne:tangentbord} where the three rows with letters are shifted in descending order: 0, 5 and 15 millimeters. The spacebar key is place under the X- to M-key, and the backspace is moved closer to the letter keys and is placed to the right of the P-key. 
+
+Adjustments can be done to the window size to fit the needs of the user. It can be made really small and take almost no space on the screen and can also be extended to the full width of the screen. It is always placed on top of the desktop to be able to at all times give the user the visual feedback. A improvement would be to have the opportunity to make it transparent so the user can work on documents behind the visualization of the keyboard.
+
+Because it is a virtual keyboard other layouts and adjustments can be done to fit the users preferences, e.g. would to use Dvorak or a custom set.
+
+\subsection{Feedback}
+One intension of this keyboard is to give the user a sufficient feedback that helps performance when writing with the Leap Motion Controller. Typing in mid-air could be hard and the user has to rely on visual and auditory feedback. 
+
+Visual feedback is given to the user from the computer screen where the keys and pointables are displayed. When the Leap Motion Controller updates the \texttt{LeapFrame} the visual output through a custom \texttt{NSView} is updated. All tip positions of the LeapPointable objects in the pointable list are displayed as rectangles using the x and z coordinates. As described in the previous section \ref{leapKeyboard} The Keyboard, when the user types a letter it triggers a keyboard event to the operating system. At the same time the visual key being pressed changes colour to indicate interaction. Both the keyboard event and changed colour helps the user see what has happen.
+
+The auditory feedback is given when a user performs a keystroke. When a key press occurs the system plays a clicking sound to indicate the keystroke. This sound helps the user to understand that the velocity of the key press is sufficient to exceed the key press threshold. If the user does not hit a key the sound is not played. So the absence of visual and auditory feedback should indicate that no key press has occurred. An improvement of the system could be play different sounds depending on if a key was hit successfully or not.
+
+The absence of tactile feedback can play a key role for the development of a horizontal qwerty keyboard. Without the tactile feedback the user lacks one important component when interacting with the computer. To play a more significant role the visualization of the fingers are displayed on the screen. This having the benefit that the user does not have to look down on the keyboard to be able to see what key is to be pressed. The user can keep the eyes more stable and less flickering for the user that has to look at the keys while typing.
+
+%\pagebreak
+\section{Testing and Evaluation}\label{testev}
+First tries of the virtual keyboard shows that it is possible to use for typing and overall the functionality is that of a physical keyboard. The speed of a input device is an important aspect for the usability especially when it comes to producing text. A user does not want to use a slow system where it takes forever to type simple content. In this section the proposed keyboard is examined where the typing speed is measured using words per minute (WPM):
+
+\[
+\begin{array}{ccc}
+\text{WPM} &=& \frac{\left\lvert{S}\right\vert }{t} \times 60 \times \frac{1}{5}
+\end{array}
+\]
+
+WPM is defined using the length of the set of characters written by the user, $\left\lvert{S}\right\vert$, where the time $t$ is measured in seconds. The length of a word is normalized to five characters long.
+
+There are two types of errors that can occur when typing: corrected errors and uncorrected errors. Correcting an error effects the typing speed in a negative manner. The user has to take the time to do numerous key presses that does not effect the length of the character set, $\left\lvert{S}\right\vert$. Both error types can have a negative effecting on the rhythm of typing, where the user loses focus.\cite{1264.full} In this test the subjects was asked to correct their mistakes. 
+
+WPM is used as a measure to see if the keyboard can be used at a sufficient rate. Due to limitations of the keyboard, the test is based on only writing lower case words and without special letters. The subjects in the test were native Swedish speakers so the test phrases were in Swedish using words without å, ä and ö. As shown in Table 1 the average result for using the keyboard was 14,6 WPM and a top result of 17,8 WPM.
+
+\begin{table}[htdp]
+\caption{Test result}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Method & High & Low & Average  \\ 
+\hline
+Fingers & - & - & - \\
+Tools & - & - & -\\
+\hline
+\hline
+Total & 17,8 & 11,7 & 14,6\\
+\hline
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}
+
+The statistical result shows a quite low WPM compared to writing on a physical keyboard and could be an indication that a virtual mid-air qwerty keyboard is not the right way to go regarding mid-air typing. Concerning the performance rate of the keyboard, there may be a better way of typing in the mid-air when using a device made for gestures. This way is slow and makes it less likely that one would want to write long texts using this method, but could be used for shorter text like usernames or similar.
+
+It is difficult to write two letters that lies next to each other on the keyboard. Typing, e.g. R and E with two different fingers on each key prove to be difficult. The different lengths of the fingers makes it harder to aim two keys at the same time and it is also because the Leap Motion Controller sometimes has problems detecting all the fingers when they move close to each other. When typing on this virtual keyboard the user needs to have the fingers more straight than using a physical keyboard. This could lead to the user using more of a hunt and peck technique, a technique where the user only uses one finger on each hand to type. The test result does not take in consideration on what typing technique the subject used.
+
+Similar to the two-fingered typing, the use of tools the motion becomes more of a drumming way of typing. Tools could be used with one in each hand or with only one tool. 
+
+Sometimes the Leap Motion system has problems when objects enters its field of view, making the keyboard perform keystrokes when it is not intended. This could be solved by disabling a hand or tool from performing key presses for the first seconds when it is recognized. Another way would be to lett the user indicate when the system can write. 
+
+A keyboard can not always be present on the screen, it would be waste of screen space and if it is active, other applications would trigger not intended keystrokes. One solutions would be that with a gesture the keyboard would start, and with another gesture close the keyboard.
+
+%\pagebreak
+\section{Conclusion}
+%Can a horizontal keyboard provide sufficient writing speed?
+%Would it be possible to create a qwerty layout keyboard with the Leap Motion Controller?
+
+The aim for this thesis was to propose a horizontal qwerty keyboard for the Leap Motion Controller. One intent was to understand if sufficient data would be available for this task. The implementation is designed to mimic how a physical keyboard is used. Writing on a keyboard requires precise hand and finger movements. 
+
+The conclusion is that it is possible to develop a mid-air keyboard for the Leap Motion Controller with these premises. But this kind of keyboard may not be the most suitable for three dimensional interaction, or at least not for the Leap Motion Controller. This thesis does not aim to find the best way of typing and just because keyboards work for text entry does not mean that it is the best way to enter text. If the task is just to enter data in an effective way, e.g. writing long texts in a notepad kind of way, this keyboard is not beneficial with its low writing speed of approximately 15 WPM. 
+
+To imitate a physical keyboard in mid-air one disadvantage is that it lacks an important aspect of tactile feedback, and a negative consequence for this is a slower typing speed. This is a big drawback for this kind of approach, but the similarity to a physical keyboard makes it easier for users to adapt to. One can learn to use it much faster than if introduced to a completely new way of typing. An application area for this kind of keyboard would be for shorter inputs that does not require a fast typing speed to be satisfactory.
+
+Compared to the methods for text entry with Microsoft Kinect in \cite{barbanik.2014dipl} the proposed keyboard performs quite well regarding to writing speed, where the fastest of the methods performing around 4 WPM. Garth Shoemaker et al.\cite{p231-shoemake} concludes that writing speed around 18,9 WPM for there qwerty keyboard is sufficient to writing by hand, therefor the typing speed for this project at 17,8 WPM would be in the same region.
+
+An advantage from using the Leap Motion Controller is that no training is needed to calibrate the system, it can be run out of the box. This also goes for the keyboard itself that can be used straight away. Another advantage is that no hardware or markers are needed on the hands to interact with the device. Two disadvantages are that the background lighting can have a negative effect on the performance of the device and that the cameras see from only one angle, making it possible to block fingers out of view.
+
+The keyboard is not a natural way of communicating for the human it is a learnt way to interact with the computer. So when it comes to the naturalness there could be improvements on that area, where the communication is not on the term of the computer. A more natural way could be used, or at least a method that feels more natural to the user, e.g. speech. 
+
+Although the virtual qwerty keyboard is not the best way for text input, a method for typing is necessary in the progress to develop a gesture based interface.
+
+\pagebreak
+\bibliographystyle{unsrt}
+\bibliography{thesis}
+
+
+
+\end{document}
+
+
