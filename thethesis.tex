@@ -25,28 +25,30 @@
 
 \section{Introduction}
 \setcounter{page}{1}
-The keyboard plays a significant role in the human-computer interaction (HCI). Computer users are often custom to common sets of input and output devices such as keyboard, mouse and monitor. Many modern operating systems use a window icon menu pointer (WIMP) user interface, setting a standard of how to interact with computers. 
+The keyboard plays a significant role in the human-computer interaction (HCI). Computer users are often custom to common sets of input and output devices such as keyboard, mouse and monitor. Many modern operating systems use a window icon menu pointer (WIMP) user interface, setting a standard of how to interact with computers.%, where the keyboard and mouse are the main input devises.
 
-The keyboard and mouse are the main input devises when using a computer. When it comes to typing text the main alternative is the keyboard and it has now been a part of the human-computer interaction for a very long time, where it plays a central role.\cite{20043dui} Nevertheless, it is not always convenient to use a physical device for inputting data.
-
-Sometimes it would be rather practical to use other ways to enter text without touching a physical keyboard, where a mid-air way of entering data would be really handy. One application area from the everyday life would be while a person is cooking or baking and needs to look up a recipe on the computer, with grease or dough all over the hands.
+%The keyboard and mouse are the main input devises when using a computer.
+When it comes to typing text the main alternative is the keyboard and it has now been a part of the human-computer interaction for a very long time, where it plays a central role.\cite{20043dui} %Nevertheless, it is not always convenient to use a physical device for inputting data.
+Nevertheless, it is not always the most convenient way of inputting data. Sometimes it would be rather practical to use other ways to enter text without touching a physical keyboard, where a mid-air way of entering data would be really handy. 
+An application area from the everyday life would be while a person is cooking or baking and needs to look up a recipe on the computer, with grease or dough all over the hands.
 
 The first typewriters had keyboards with keys ordered alphabetically.\cite{website:ne:tangentbord} During the 1870's the keyboard layout for typewriters started to be dominated by the qwerty, which was developed to increase typing speed, by considering the mechanic limitations of the early typewriters.\cite{website:ne:tangentbord} Since then the qwerty layout has been the standard and was later adapted to the computer keyboard. Some attempts has been to change the layout (e.g. Dvorak) but none has really taken the place of qwerty.
 
-The aim of this report is to propose a method for horizontal text input based on the qwerty keyboard layout for the Leap Motion Controller. An interesting aspect of the problem is if the feedback that is provided to the user is sufficient and if the Leap Motion Controller can provide adequate data for this task. 
+The aim of this report is to propose a method for horizontal text input based on the qwerty keyboard layout for the Leap Motion Controller. A camera-based device that tracks your fingers and hands using infra red light.
+One interesting aspect of the problem is if the feedback that is provided to the user is sufficient and if the Leap Motion Controller can provide adequate data for this task. 
 
-The questions for this thesis are: 
+The questions to be answered in this thesis are: 
 \begin{itemize}
-  \item Can a horizontal keyboard provide sufficient writing speed?
   \item Would it be possible to create a qwerty layout keyboard with the Leap Motion Controller?
+  \item Can this keyboard provide sufficient writing speed?
 \end{itemize}
 
 \pagebreak
 
 \subsection{Project Background}
-The material for this thesis comes from the company Spree AB, referred to as Spree. One problem they came across when using the Leap Motion Controller was how to enter text when using the device without turning to the keyboard. They were curious if it could work as a keyboard, and if the idea of a keyboard would make sense.
+The material for this thesis comes from the company Spree AB, referred to as Spree. A problem that occurs when using the Leap Motion Controller is how to enter text without turning to a keyboard. Spree were curious if the Leap Motion Controller could be used as a keyboard and if using it as a keyboard would be sensible. As a result, there would be a need for only one input device.%One problem they came across when using the Leap Motion Controller was how to enter text when using the device without turning to the keyboard. They were curious if it could work as a keyboard, and if the idea of a keyboard would make sense.
 
-Spree's main objective is to find out in what extent the Leap Motion Controller can produce text input. The goal would be to get a deeper understanding in how the hands are recognized by the Leap Motion Controller and how it could be used to determine if a key is pressed or not. 
+Spree's main objective is to find out in what extent the Leap Motion Controller can produce text input. They would like to get a deeper understanding in how the hands are recognized by the Leap Motion Controller and how it could be used to determine if a key is pressed or not.
 
 \subsection{Limitations of project}
 This thesis does not aim to implement other keyboard types than the Swedish qwerty layout, nor does it tend to make a comparison between different keyboard types. That is, not aiming to determine if there is a better keyboard layout than a horizontal qwerty for the Leap Motion Controller or compare it with other suggested layouts. 
@@ -71,7 +73,7 @@ This section aims to give a foundation to the field of three dimensional interac
 \subsection{Human-Computer Interaction in three dimensional space}
 Human-Computer Interaction (HCI) defines the communication between a user and a computer system. Humans and computers do not speak the same language and therefor they need a way be able to communicate with each other. The interface in between is acting like an interpreter uniting these two. 
 
-It has now for several decades been the standard that interaction with the computer mostly has been through the use of a mouse and keyboard.\cite{05489218} When it comes to interacting and navigating in a three dimensional space the traditional mouse and keyboard can be hard to use. A more appropriate way to deal with this task would be to use another kind of input device. One solution would be to use a three dimensional user interface. This would allow the user to perform the input in three dimensional space by using e.g. direct hand motions.
+It has now for several decades been the standard that the interaction with computers mostly has been through the use of a mouse and keyboard.\cite{05489218} When it comes to interacting and navigating in a three dimensional space the traditional mouse and keyboard can be hard to use. A more appropriate way to deal with this task would be to use another kind of input device. One solution would be to use a three dimensional user interface. This would allow the user to perform the input in three dimensional space by using e.g. direct hand motions.
 	
 The research on three dimensional interaction began in the 1960's.\cite{20043dui} Even if the research in this area began more than a half century ago the keyboard and mouse still has a strong position. Hand motion, mentioned above, is one way of doing three dimensional interaction, nonetheless there are many researched ways of interact with computers through three dimensional space. 
 %Interacting through hand motions is one way for HCI, nonetheless it is not the only way of interact with computers through three dimensional space. 
