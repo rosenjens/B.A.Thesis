@@ -84,51 +84,79 @@ A more appropriate way would be to use a three dimensional user interface. That 
 Research on three dimensional interaction began in the 1960's\cite{20043dui}. Even if the research in this area began more than a half century ago the keyboard and mouse still has a strong position\cite{?}. Hand motion, mentioned above, is one way of doing three dimensional interaction, nonetheless there are many researched ways of interact with computers through three dimensional space. 
 %Interacting through hand motions is one way for HCI, nonetheless it is not the only way of interact with computers through three dimensional space. 
 
-\subsubsection{Degrees of freedom}
+\paragraph{Degrees of freedom}
 One method of comparing three dimensional input devices is to compare the use of degrees of freedom. This is a measurement of the number of parameters that a system can use to acquire information\cite{ne.se-firhetsgrad}. A higher number indicates that more data is necessary to describe the state of the input. Examples of devices with low degree of freedom are the keyboard, mouse and joystick. 
 
 Using a mouse to navigate in three dimensional space can be hard because the mouse has two degrees of freedom and to fully navigate three are needed. Therefor, having fewer degrees of freedom than the dimensions of the space makes for difficult positioning.
 %With fewer degrees of freedom then the environment trying navigate in, the user will find it harder 
 %The lack of degrees of freedom makes it harder to navigate in a interface with a extra dimension.
 
-\subsubsection{The human hand}
-The human hand is very complex and can be used as an advanced input device that opens up for great control of the computer. When the palm is able to move freely, the whole hand has 29 degrees of freedom.\cite{Sturman1992}
+\paragraph{The human hand}
+The human hand is very complex and can be used as an advanced input device that opens up for great control of the computer. It consists of 27 bones, tendons and a large amount of muscles that allow for great flexibility\cite{ne.se/hand}. %Nationalencyklopedin, hand. http://www.ne.se/uppslagsverk/encyklopedi/lång/hand
+
+If the hand is able to move freely, it allows for a total of 29 degrees of freedom\cite{Sturman1992}. The fingers constitute 23 of the total amount and the additional six are due to rotation and translation of the hand. However, a large value does not necessary mean that the full potential needs to be used. A simpler task could take the orientation of the hand in to account, making use of only three degrees of freedom.
+
+%When the palm is able to move freely, the whole hand has 29 degrees of freedom\cite{Sturman1992}.
 %If the palm is able to move freely in space, there are in the whole hand 29 degrees of freedom.\cite{Sturman1992} 
-Thus, the hand is very complex, but this can also be a disadvantage when used as input. All the joints and movability in the hand makes it hard to track. There are as much as 23 degrees of freedom just in the fingers. However, when using the hand as input source it does not mean that the full potential of degrees of freedom needs to be used. A simpler task would be to use the orientation of the hand in space as input, making use of only three degrees of freedom. 
+%That is 23 degrees of freedom in the fingers and the extra six degrees of freedom due to the rotation and translation of the hand.
 
-Gestures are another way to use the hands for HCI. %Using gestures in HCI could be an more natural way of communicating with computers. 
-Zhou Ren et al.\cite{rhgrwks} think that hand gestures are a more natural way for humans to communicate with computers. This is  because of how it resembles the way humans interact with each other. The term of ``natural user interface'' is used in their paper. Others like Donald A. Norman claims, in his text \textit{Natural User Interfaces Are Not Natural}\cite{p6-norman}, that most gestures are not natural and nor are they easy to memorize, which is a negative consequence of gestures. But Norman is not all opposed towards gestures and think that they eventually will find their place in HCI. 
+%Gestures are another way to use the hands for HCI. %Using gestures in HCI could be an more natural way of communicating with 
 
-The thought of naturalness is that there are some methods that are more natural to the human mind, like hand movements and gestures.
+\paragraph{Gestures and naturalness}
+Zhou Ren et al.\cite{rhgrwks} believes that hand gestures are a more natural way for humans to communicate with computers. In the way that gestures resemble more the way humans interact with each other. They use the term of a ``natural user interface'' in their paper. Others like Donald A. Norman claims, in his text \textit{Natural User Interfaces Are Not Natural}\cite{p6-norman}, that most gestures are not natural and nor are they easy to memorize, which is a negative consequence of gestures. But Norman is not all opposed towards gestures and think that they eventually will find their place in Human-computer interaction. 
+
 %The thought of naturalness is that hand movements and gestures would be more natural to the human mind. 
-Naturalness is aspiring to be a intuitive way of interacting with computers. This would refer to a natural way of doing things, what first comes to our minds, and a way of direct control with unobstructed peripheral.
+%The thought of naturalness is that there are some methods that are more natural to the human mind, like hand gestures.
+Naturalness is the idea that there are some communication methods are more natural to the human mind, like gestures compared to a joystick. It is aspiring to be a intuitive way of interacting with computers. Instead of having to learn how to interact with a computer, naturalness refer to a natural way of doing things, what first comes to our minds, and a way of direct control with unobstructed peripheral.
 
-According to Doug A. Bowman et al.\cite{20043dui} some of the factors that must be taken in consideration when choosing an input devise to use with a three dimensional user interface, is the ergonomics and the type of tasks that will be performed. The ergonomics is an important consideration. A user should not have to be exposed to difficult situations in which the body can be injured or where the user chooses not to carry out a certain task because of poor design.
+%some of the factors that must be taken into consideration when choosing an input devise to use with a three dimensional user interface, is the ergonomics and the type of tasks that will be performed. 
+According to Doug A. Bowman et al.\cite{20043dui} ergonomics and the type of task are two key factors that must be taken into consideration when choosing an input device for a three dimensional user interface. Ergonomics is an important consideration when it comes to user experience. The device should not expose the user for difficult situations where the user can get injured or feel uncomfortable. This could lead to that the user chooses not to carry out a certain task because of poor design.
+%The ergonomics is an important consideration. A user should not have to be exposed to difficult situations in which the body can be injured or where the user chooses not to carry out a certain task because of poor design.
 
 \subsection{Three dimensional input techniques}
-There are various techniques that can be used for communicating with a computer through three dimensions. Different devices can be beneficial for various tasks. %%Lägg till något om att här kommer tre tekniker....
+%There are various techniques that can be used for communicating with a computer through three dimensions. Different devices can be beneficial for various tasks. %%Lägg till något om att här kommer tre tekniker....
+There are various techniques and devices that can be used for communicating with a computer. Like for two dimensional input devices, different techniques have different benefits and drawbacks depending on the task. In the following section three techniques for three dimensional input will be presented, camera-based, glove-based and accelerometer-based input.
 
 \paragraph{Camera-based input}
-Camera-based systems use a camera image to determine positions in three dimensional space. One way to detect the position of objects is to use markers, either LED lights or coloured spots. For example, markers of different colour can be attached to the fingers tips and the device can then distinguish between the fingers more easily. 
+%Camera-based systems use a camera image to determine positions in three dimensional space. One way to detect the position of objects is to use markers, either LED lights or coloured spots. For example, markers of different colour can be attached to the fingers tips and the device can then distinguish between the fingers more easily. 
+Camera-based system uses, like the name suggest, a camera image to retrieve the input from its surroundings. Object positions can for example be tracked by using markers like coloured dots or lights. 
+When different coloured markers are attached to each finger tip it makes it easier to distinguish between them in the image.
 
-Then there is the marker free approach, where there are no fixed points in the image to look for. This gives the user a system that can be used straight away without any preparation, and the user is not obstructed by peripheral. A disadvantage when using a camera-based input device is that line of site is needed to determine good positioning.
+Not all camera-based systems use markers, there is also the marker free approach. This makes it harder for the device to see specific objects, but gives the user a system that needs less preparation. The biggest advantage is that the user is not obstructed by accessories when using the device. A disadvantage on the other hand for all type of camera-based input is that line of site is needed to determine good positioning.
 
-Microsoft Kinect is a system that uses marker free camera tracking of the human body. This system uses an infra red laser and an infrared camera to measure depth, and then an additional colour camera.\cite{06290794} The two cameras work together to make a three dimensional image of the environment in front of it. The resolution on the Kinect is quite small, around 640 $\times$ 480 typically\cite{06470686}, giving it an disadvantage when trying to track smaller objects like fingers at distance. Kinect is better at tracking bigger body parts.
+%Then there is the marker free approach, where there are no fixed points in the image to look for. This gives the user a system that can be used straight away without any preparation, and the user is not obstructed by peripheral. A disadvantage when using a camera-based input device is that line of site is needed to determine good positioning.
+
+Microsoft Kinect uses marker free camera tracking. This system uses an infra red laser and an infrared camera to measure depth, and an additional colour camera\cite{06290794}. The two cameras work together to make a three dimensional image of the environment in front of it. The resolution on the Kinect is quite small, around 640 $\times$ 480 typically\cite{06470686}, this is an disadvantage when trying to track smaller object, e.g fingers at a distance. %giving it an disadvantage when trying to track smaller objects like fingers at distance. 
+Kinect is better at tracking bigger body parts.
 
 The Leap Motion Controller, that is used in this thesis, is also a camera based device that uses three infra red lights and two infra red cameras to capture images of the hands. More about the Leap Motion Controller in section \ref{leap}.
 
 \paragraph{Glove-based input}
-Gloves can be used to track the position and motion of the hands. Using gloves to tracking the hands has been researched for several decades now.\cite{Sturman1992} Many kinds of glove-based devices have been developed for tracking hands. This type of device is more of an mechanical device that determines the hands position in three dimensional space. For example, has gloves have been used, with good result, for tracking sign languages.\cite{out}
+Gloves cover the hand and can be used to track the position and motion of the hand. Using glove-based input is not new, for several decades researchers have been using this approach to track hand motion\cite{Sturman1992}, and over the many different kind of glove-based devices have been developed.
+%Using gloves to tracking the hands has been researched for several decades now\cite{Sturman1992}. 
+%Many kinds of glove-based devices have been developed for tracking hands. 
 
-Gloves can give a high precision in positioning and are not as much affected by its surroundings as a camera system. This usually makes gloves a more reliable system to use.\cite{06470686} Background noise or the lighting in the room do not hinder the glove from pointing out an accurate position. On the negative side, when using a glove the glove itself can interfere with the user from performing natural gestures. Wearing a glove makes the user not as free as a camera-based system, of course depending on the design of the glove.
+
+%For example, has gloves have been used, with good result, for tracking sign languages.\cite{out}
+
+Glove-based input can give a high precision in positioning and they are not as much affected by its surroundings as a camera system. Background noise or the lighting in the room do not hinder the glove from tracking an accurate position. This usually makes gloves a more reliable system to use\cite{06470686}. Reading sign language is an area were using this kind of system gives good result\cite{out}.
+%One usage for hand tracking is to read sign language, in this case gloves can be used with a good result .
+
+On the downside, when using a glove-based system the glove itself can interfere with the user from performing natural gestures. Wearing a glove makes the user not as free as a camera-based system, of course depending on the design of the glove.
 
 %Gloves, with a high precision in positioning, can ensure a more reliable system compared to camera-based systems where the use of cameras can be of disadvantage.\cite{06470686} 
 %Another advantage is that it is not effected by the surrounding, background noise or the lighting in the room do not hinder the glove from pointing out an accurate position. The negative side of using a glove is that the glove it self can interfere with the user from performing more natural gestures. Wearing a glove make the user not as free as a camera-based system, of course depending on the design of the glove.
 
-David J. Sturman writes about several gloves in his article \textit{A survey of glove-based input}\cite{sturmanASoG}. An early glove was the Sayre Glove that was developed in the 1977, which is a lightweight glove based on light passing through tubes along the fingers. When the fingers is being bend less light passes through, and measuring the light can determine how much the finger is being bent.
+David J. Sturman writes about several gloves in his article \textit{A survey of glove-based input}\cite{sturmanASoG}. One of the earliest gloves was Sayre Glove that was developed in the 1977, which uses a lightweight glove based on light passing through tubes along the fingers. When a finger is being bend less light passes through, and by measuring the light it is possible to determine how much the finger has bent.
+
+%An early glove was the Sayre Glove that was developed in the 1977, which is a lightweight glove based on light passing through tubes along the fingers. When the fingers is being bend less light passes through, and measuring the light can determine how much the finger is being bent.
 
 \paragraph{Accelerometer-based input}
-Similar to the glove-based systems, acceler\-ometer-based systems are something that needs to be worn on the body. Accelerometers measure the changes in speed and direction, and can there by determine how objects are moving. A product that uses accelerometer for HCI is the Nintendo Wii remote.\cite{out}
+An accelerometer measures an objects acceleration\cite{ne.se}, similar to the glove-based systems, accelerometer-based systems are something that needs to be worn on the body. 
+%Nationalencyklopedin, accelerometer. http://www.ne.se/uppslagsverk/encyklopedi/lång/accelerometer
+Using accelerometers it is then possible to measure the speed and direction of an object.
+%Accelerometers measure the changes in speed and direction, and can there by determine how objects are moving. 
+A product that uses accelerometer for human-computer interaction is the Nintendo Wii remote.\cite{out}
 
 \subsection{Application area}
 There are many areas that could benefit from three dimensional input, especially where there is a need for more complex input methods. David Joel Sturman\cite{Sturman1992} brings up an example of unfriendly environments. There manually controlled robots could be used instead of humans.
@@ -167,6 +195,17 @@ When designing a user interface it is important to have the ergonomics in mind a
 
 
 \paragraph{Degrees of freedom}
+%Thus, the hand is very complex, it can also be a disadvantage when used as input. 
+%
+%All the joints and movability in the hand makes it hard to track. 
+%
+%There are as much as 23 degrees of freedom just in the fingers. 
+%
+%However, when using the hand as input source it does not mean that the full potential of degrees of freedom needs to be used. 
+%
+%A simpler task would be to use the orientation of the hand in space as input, making use of only three degrees of freedom. 
+
+
 The human body is flexible and can move in many different ways, this resolves in a lot of degrees of freedom. Just considering the hands, that through its anatomy of bones can create complexed movement patterns, allows for great mobility and many degrees of freedom. A high number of degrees of freedom can be challenging to take advantage of and does not necessary correspond to that best choice of every task.
 
 The use of more degrees of freedom than the task requires can be con\-fusing.\cite{p36-herndon} %The use of higher degrees of freedom for tasks with lower degrees of freedom can be confusing.\cite{p36-herndon} 
