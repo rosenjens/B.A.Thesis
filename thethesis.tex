@@ -323,17 +323,37 @@ By tapping and then sliding the finger in different ways different letters and s
 The idea is to use this approach on multi-touch devices but would maybe be suitable even for mid-air typing as well. 
 
 \subsection{Related work}  \label{rel}
-This section aims to do a survey of previous work in the field of text entry in three dimensional space. There are several papers on the subject of typing in mid-air. The approach to text entry in three dimensional space come across as different depending on what device is used to interact with the computer. This field deals with an interesting problem that has been addressed by many researchers.  
+%This section aims to do a survey of previous work in the field of text entry in three dimensional space. 
+%There are several papers on the subject of typing in mid-air. 
+%The approach to text entry in three dimensional space come across as different depending on what device is used to interact with the computer. 
+%This field deals with an interesting problem that has been addressed by many researchers.  
+%Some of the papers use devices that are commercial e.g. Microsoft Kinect and their SDK. 
 
-Some of the papers use devices that are commercial e.g. Microsoft Kinect and their SDK. \textit{Mid-air text entry methods}\cite{barbanik.2014dipl} a thesis from 2014 has studied five different approaches to mid-air typing using Kinect. First a vertical keyboard with qwerty layout that uses Microsofts integrated push function to press a key. Then a circular keyboard, where the user selects a letter by rotating a pointer to the right position with one hand and selecting it with a gesture. Two of the methods are based on the same idea, where the user select from three sets of letters, like T9, and then pattern matching to words. The last approach is with developing an 8pen system.
+%There are several papers on the subject of mid-air typing. 
+%\textit{Mid-air text entry methods}\cite{barbanik.2014dipl} a thesis from 2014 studied five different approaches to mid-air typing using Microsoft Kinect and their SDK. Barbariuskiy
+%First a vertical keyboard with qwerty layout that uses Microsofts integrated push function to press a key. 
+%Then a circular keyboard, where the user selects a letter by rotating a pointer to the right position with one hand and selecting it with a gesture. 
+%Two of the methods are based on the same idea, where the user select from three sets of letters, like T9, and then pattern matching to words. 
+%The last approach is with developing an 8pen system.
 
-Large wall displays are an area where mid-air keyboard would be beneficial. Garth Shoemaker et al.\cite{p231-shoemake} wrote a paper presented in 2009 about text input techniques for large displays where they compare three methods: circle, qwerty, and a cube keyboard, which use a hand held device. Their result was the the qwerty keyboard was faster at producing words, a rate of 18,9 words per minute, and had fewer errors. They drew the conclusion that a qwerty keyboard would be good way of doing text input on larger screens.  
+%There are several papers on the subject of mid-air typing. 
+Large wall displays are one area where mid-air keyboard would be beneficial. Garth Shoemaker et al.\cite{p231-shoemake} wrote a paper presented in 2009 about text input techniques for large displays where they compare three methods: circle, qwerty, and a cube keyboard, which use a hand held device. Their result was the the qwerty keyboard was faster at producing words, a rate of 18,9 words per minute, and had fewer errors. They drew the conclusion that a qwerty keyboard would be good way of doing text input on larger screens.  
 
-Another paper the deals with the problem of typing on large displays is \textit{Selection-based mid-air text entry on large displays}\cite{chp3A10} from 2013. Anders Markussen et al. propose three different sets of input methods to compare: H4 Mid-air, based on a method for game control text input; MultiTap, based on how the phone is used for typing with nine keys; and a projected qwerty keyboard, a keyboard projected on the screen. H4 Mid-air and MultiTap are designed so they can be used without visual feedback. They found that the most successful method was the projected qwerty keyboard with an average writing speed of 13,2 words per minute. 
+%Another paper the deals with the problem of typing on large displays is \textit{Selection-based mid-air text entry on large displays}\cite{chp3A10} from 2013.
+Another paper that addresses the subject of typing on large displays is \textit{Selection-based mid-air text entry on large displays}\cite{chp3A10} from 2013. 
+Anders Markussen et al. propose three different input methods to compare: H4 Mid-air, based on a method for game control text input; MultiTap, based on how the phone is used for typing with nine keys; and a projected qwerty keyboard, a keyboard projected on the screen. 
+H4 Mid-air and MultiTap are designed so they can be used without visual feedback. 
+%They found that the most successful method was the projected qwerty keyboard with an average writing speed of 13,2 words per minute. 
+Anders Markussen et al. found that the most successful method was the projected qwerty keyboard with an average writing speed of 13,2 words per minute. 
 
-Taichi Murase et al.\cite{p9-murase} propose in their paper from 2011 a virtual qwerty keyboard using one camera to detect key presses. Keys are correlated with fingers and one finger corresponds to more the one key. The keyboard tries to determine depth to determine which key was pressed.
+Taichi Murase et al.\cite{p9-murase} propose in their paper \textit{Gesture keyboard requiring only one camera} from 2011 a virtual qwerty keyboard using a camera to detect key presses. 
+%Keys are correlated with fingers and one finger corresponds to more the one key. 
+Each keyboard key can only be pressed by a gesture from a specific finger. For example a forward and pressing gesture of the left ringfinger corresponds to a 'o'. Due to this, the keyboard is not fixed and the user has the option to change hand position during typing. They do not mention the average typing speed for their experiment but the input error rate is 8.6\%.
+%The keyboard tries to determine depth to determine which key was pressed.
 
-For the Leap Motion Controller there are a few applications that can be used for typing. One is the DexType\footnote{http://www.dextype.com \cite{web:dextype}}, where the letters are ordered into a single line on the bottom of the screen. Typing is done by using the fingers as pointers on the screen and writing is like playing a piano. ASETNIOP\footnote{http://www.asetniop.com \cite{web:asetniop}} is a chord keyboard that can be used with the Leap Motion Controller. The fingers represent keys and are used to make combinations. An advantage for this type of keyboard is that the placement of the fingers in mid-air does not matter. A disadvantage on the other hand is that the user has to learn a new way to type.
+For the Leap Motion Controller there are a few applications that can be used for typing. One is the DexType\footnote{http://www.dextype.com \cite{web:dextype}}, where the letters are ordered into a single line on the bottom of the screen. Typing is done by using the fingers as pointers on the screen and writing is like playing a piano.
+
+ASETNIOP\footnote{http://www.asetniop.com \cite{web:asetniop}} is a chord keyboard that can be used with the Leap Motion Controller. The fingers represent different keys and to produce characters the user presses different combinations of theses keys. It is similar to playing a chord on a piano. With just a few keys it is possible to produce all the keyboard characters. An advantage for this type of keyboard is that the placement of the fingers in mid-air does not matter. A disadvantage on the other hand is that the user has to learn a new way to type.
 
 %\pagebreak
 \section{Project Overview}\label{projover}
