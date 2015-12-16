@@ -384,18 +384,29 @@ If this happens the system sees a hand with fewer than five fingers, and it is e
 The Leap Motion Controller can also track gestures, like swiping movements or a finger drawing a circle. The measurements the system uses is: microseconds for time; millimeters for distance; millimeters per second for speed; and angles are measured in radians.
 
 \subsection{Application Programming Interface overview}
-The Leap Motion Controller and its software does the image processing, and through the API it is possible to get information about hands, fingers and tools that the device has recognized. Leap Motion has developed support for several programming languages, C++, C\# and Unity, Objective-C, Java, Python, JavaScript. This thesis focuses on the Objective-C API.
+The Leap Motion Controller and its software does the image processing, and through the API it is possible to get information about hands, fingers and tools that the device has recognized. 
+Leap Motion supports several programming languages, C++, C\# and Unity, Objective-C, Java, Python, and JavaScript. This thesis focuses on the Objective-C API.
 
-The Leap Motion Controller provides data through the API as sequences of frames. A frame is a representation of what the device has observed at a specific moment and contains data of what has has been tracked. To get the latest frame it is possible to ask the system for it. It is also possible to let the system proved information when a new frame is available.
+The Leap Motion Controller provides data through the API as sequences of frames. 
+%A frame is a representation of what the device has observed at a specific moment and contains data of what has has been tracked. 
+A frame is a representation of what the device has observed at a specific moment.
+To get the latest frame it is possible to ask the API for it, but It is also possible to let the system proved information when a new frame is available.
 %To get a frame it is possible to ask for the latest frame or the system can provide information that there is a new frame. 
 
-A frame object consists of lists of the observed fingers, hands, tools and gestures. When a developer is in no need to distinguish between tools and fingers it is possible to use a pointables list, that includes all finger and tool objects in that frame. Hand objects represents a hand detected in the Leap Motion Controllers field of view. The hand object consists of information e.g. palm position, palm velocity, rotation, direction, a set of fingers, and tools held by the hand. 
+A frame object consists of lists of the observed fingers, hands, tools, pointables, and gestures. 
+%When a developer is in no need to distinguish between tools and fingers it is possible to use a pointables list, that includes all finger and tool objects in that frame.
+The pointable list contains all finger and tool objects in that frame. This list is useful when there is not need to distinguish between object that can point. 
+Hand objects represents a hand detected in the Leap Motion Controllers field of view. 
+%The hand object consists of information e.g. palm position, palm velocity, rotation, direction, a set of fingers, and tools held by the hand. 
+Each hand object consists of several parameters, e.g. palm position, palm velocity, rotation, direction, a set of fingers, and tools held by the hand. 
 
-A pointable is defined as a finger or tool detected by the Leap Motion Controller, and has variables like length, position of the tip, and velocity of the tip. Both fingers and tools are classified as pointable objects, but it is possible to determine which is which through function calls \texttt{isHand} or \texttt{isTool}.
+A pointable is a finger or tool, and has variables like length, position of the tip, and velocity of the tip. Both fingers and tools are classified as pointable objects, but it is possible to determine which is which through the functions \texttt{isHand} or \texttt{isTool}.
 
 When a gesture is recognized by the Leap Motion Controller, the system adds the recognized gesture to the current frame. For gestures that occur during several frames the gesture will continue to exist in the gesture list with updated values. Other gestures that only occur during one frame will only exist in that frames gesture list. 
 
-For the Leap Motion Controller it is also possible to use an interactionBox, that is a rectangular cuboid that is inside the Leaps field of view and provides normalized coordinates relating to the cuboid. This could be beneficial when mapping coordinates to drawing on a screen.
+It is also possible to use an interactionBox, that is a rectangular cuboid that is inside the Leaps field of view and provides normalized coordinates relating to the cuboid. 
+%This could be beneficial when mapping coordinates to drawing on a screen.
+This makes it easier to transfer Leap Motion Controller coordinates to screen coordinates.
 
 \subsection{The virtual qwerty keyboard}
 Basically, typing is a movement and rotation of the hand to a specific target, where the movement involves the whole-hand and all its fingers.\cite{1264.full} Typing is a sequence of keystrokes. A individual keystroke can be seen as a movement to a target that can be modeled by Fitts's law.\cite{p91-zhai} The keystroke can the be divided into tree steps: moving to the key; pressing the key; and returning to the originated position.\cite{1264.full} 
