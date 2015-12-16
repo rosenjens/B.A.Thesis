@@ -360,18 +360,29 @@ ASETNIOP\footnote{http://www.asetniop.com \cite{web:asetniop}} is a chord keyboa
 This section contains a proposal to a horizontal keyboard based on the qwerty keyboard layout for the Leap Motion Controller. 
 
 \subsection{The Leap Motion Controller} \label{leap}
-The Leap Motion Controller is a small USB device that detects and tracks hands, fingers and tools for pointing, like a pencil. To use the device no sensors or markers on the hands are needed. The device consists of three infra red LED lights, the light of which is reflected of object above the device and captured by two infrared cameras. It produces monochrome images that are analyzed to detect hands, fingers, and tools.
+The Leap Motion Controller is a small USB device that detects and tracks hands, fingers, and pointing tools, e.g. a pencil.
+%To use the device no sensors or markers on the hands are needed.
+It uses marker and sensor free hand detection, so it can be used with out any set up.
+The device consists of three infra red LED lights, the light reflects of objects above the device and is captured by two infrared cameras. 
+%It produces monochrome images that are analyzed to detect hands, fingers, and tools.
+From this two monochrome are produced that are analyzed to detect hands, fingers, and tools.
 
-Objects in the visual field of the Leap Motion Controller can be seen in the range of 25 to 600 millimeters above it. It uses the two cameras to produce depth and a three dimensional view. The field of vision that the Leap Motion Controller can see can be described as a cone like view with its tip pointing at the device. 
+Objects in the visual field of the Leap Motion Controller can be seen in the range of 25 to 600 millimeters above it. It uses the two cameras to detect depth and a three dimensional view. The field of vision that the Leap Motion Controller can see can be described as a cone like view with its tip pointing at the device. 
 %The area that it can see can be describe as cone like view with its tip pointing at the device.
 
-A right-handed Cartesian coordinate system is use to determine positions, where the origin is placed at the center of the device itself. Distances are measured in millimeters. The x-axis is running parallel with the longer side of the device and moving an object to the right of the device will increase the x-value. The z-axis goes perpendicular to the x-axis in the horizontal plane and the z-value is decreased by moving the hand forward. Both the x- and z-value can be negative, but the z-value can only be positive. The y-axis is vertical to the Leap Motion Controller where the zero point is on top of the device. 
+A right-handed Cartesian coordinate system is use to determine positions, where the origin is placed at the center of the device itself. 
+The x-axis is running parallel with the longer side of the device and moving an object to the right of the device will increase the x-value. The z-axis goes perpendicular to the x-axis in the horizontal plane and the z-value is decreased by moving the hand forward. Both the x- and z-value can be negative, but the z-value can only be positive. The y-axis is vertical to the Leap Motion Controller where the zero point is on top of the device. 
 
-For the Leap Motion Controller to detect hands, fingers and tools they must be visible for the controller to recognize them and to be able to give objects a accurate position in space. This could be an issue when it is important to get input from all fingers all the time. When fingers move close to each other or are hidden from view they disappear from the system. This could lead to that a hand does not always have five fingers and it is possible for a hand object to have just one or no fingers at all.
+%For the Leap Motion Controller to detect hands, fingers and tools they must be visible for the controller to recognize them and to be able to give objects a accurate position in space. 
+The Leap Motion Controller needs to have a line of sight to a object to be able to tracking it. Otherwise, it can not recognize hands, fingers, and other tools and therefor not give these objects a accurate position in space.
+%This could be an issue when it is important to get input from all fingers all the time. 
+This is an issue when it comes to always knowing where the fingers are.
+When fingers move close to each other or are hidden from view, they disappear from the system. 
+%This could lead to that a hand does not always have five fingers and it is possible for a hand object to have just one or no fingers at all.
+If this happens the system sees a hand with fewer than five fingers, and it is even possible for the hand to have just one finger or no fingers at all.
 
-The Leap Motion Controller can also track gestures, like swiping movements or a finger drawing a circle. The measurements the system uses is: microseconds for time; millimeters for distance; millimeters per second for speed; and the angles are measured in radians.
+The Leap Motion Controller can also track gestures, like swiping movements or a finger drawing a circle. The measurements the system uses is: microseconds for time; millimeters for distance; millimeters per second for speed; and angles are measured in radians.
 
-%%
 \subsection{Application Programming Interface overview}
 The Leap Motion Controller and its software does the image processing, and through the API it is possible to get information about hands, fingers and tools that the device has recognized. Leap Motion has developed support for several programming languages, C++, C\# and Unity, Objective-C, Java, Python, JavaScript. This thesis focuses on the Objective-C API.
 
