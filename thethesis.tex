@@ -409,9 +409,16 @@ It is also possible to use an interactionBox, that is a rectangular cuboid that 
 This makes it easier to transfer Leap Motion Controller coordinates to screen coordinates.
 
 \subsection{The virtual qwerty keyboard}
-Basically, typing is a movement and rotation of the hand to a specific target, where the movement involves the whole-hand and all its fingers.\cite{1264.full} Typing is a sequence of keystrokes. A individual keystroke can be seen as a movement to a target that can be modeled by Fitts's law.\cite{p91-zhai} The keystroke can the be divided into tree steps: moving to the key; pressing the key; and returning to the originated position.\cite{1264.full} 
+%Basically, typing is a movement and rotation of the hand to a specific target, where the movement involves the whole-hand and all its fingers.\cite{1264.full} 
+Typing is a sequence of keystrokes. It is basically hitting specific targets in a specific order to produce text. This involves both displacement and rotation of the wholes-hand and all its fingers\cite{1264.full}.
+Each individual keystroke can be seen as a movement to a target that can be modeled by Fitts's law\cite{p91-zhai}.
+The movement can be divided into tree steps: moving to the key; pressing the key; and returning to the originated position\cite{1264.full}. 
 
-To have a completely fixed keyboard could be problematic because while holding the arms and hands in mid-air they tend to drift.\cite{chp3A10} Holding ones hands static in the air for a longer time can also be painful for shoulders and arms and be bad for the user. Consequently having a stationary keyboard is a bad idea and could mean that the users is either too far away or pressing more keys than intended. The solution where measuring the speed of the fingers lets the user choose at what hight to write and be allowed to drift horizontally with the hands and still be able to type. 
+%To have a completely fixed keyboard in mid-air could be problematic because while holding the arms and hands in mid-air they tend to drift.\cite{chp3A10}
+Keeping the hands stationary in mid-air is tricky, while not resting arms or wrists on any support they tend to drift\cite{chp3A10}. This can be problematic when designing a fixed mid-air keyboard.
+%Holding ones hands static in the air for a longer time can also be painful for shoulders and arms and be bad for the user. 
+It is also not ideal, and even unpleasant for the users have their hands static for longer periods, it may lead to pain in shoulders and arms. %%
+Consequently having a stationary keyboard is a bad idea and could mean that the users is either too far away or pressing more keys than intended. The solution where measuring the speed of the fingers lets the user choose at what hight to write and be allowed to drift horizontally with the hands and still be able to type. 
 
 The small size of the Leap Motion Controller makes it easy to carry around. Connected to a device with at tiny keyboard or with a small touch screen it would be possible to enjoy the comfort of a full sized keyboard.
 
