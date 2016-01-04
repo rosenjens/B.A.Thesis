@@ -417,24 +417,34 @@ The movement can be divided into tree steps: moving to the key; pressing the key
 %To have a completely fixed keyboard in mid-air could be problematic because while holding the arms and hands in mid-air they tend to drift.\cite{chp3A10}
 Keeping the hands stationary in mid-air is tricky, while not resting arms or wrists on any support they tend to drift\cite{chp3A10}. This can be problematic when designing a fixed mid-air keyboard.
 %Holding ones hands static in the air for a longer time can also be painful for shoulders and arms and be bad for the user. 
-It is also not ideal, and even unpleasant for the users have their hands static for longer periods, it may lead to pain in shoulders and arms. %%
-Consequently having a stationary keyboard is a bad idea and could mean that the users is either too far away or pressing more keys than intended. The solution where measuring the speed of the fingers lets the user choose at what hight to write and be allowed to drift horizontally with the hands and still be able to type. 
+It is also not ideal, and even unpleasant for the users have their hands static for longer periods, it may lead to pain in shoulders and arms.
+Consequently, having a stationary keyboard is a bad idea and could mean that the users is either too far away or pressing more keys than intended. 
+%A solution where measuring the speed of the fingers lets the user choose at what hight to write and be allowed to drift horizontally with the hands and still be able to type.
+A solution is to check for key presses by individual fingers. In this thesis this is done by measuring the speed of the fingers, letting the user choose at what hight to write and it allows for horizontal drift.
 
-The small size of the Leap Motion Controller makes it easy to carry around. Connected to a device with at tiny keyboard or with a small touch screen it would be possible to enjoy the comfort of a full sized keyboard.
+The small size of the Leap Motion Controller makes it easy to carry around. Connected to a device with a tiny keyboard or with a small touch screen, a virtual keyboard would allow the user to enjoy the comfort of a full sized keyboard.
 
 \paragraph{Layout}
-The keyboard for this thesis is based on the qwerty layout, so users can take advantage of their learned way of typing. Most who use a keyboard today use it with a qwerty layout and are therefor acquainted with that style of writing.\cite{p91-zhai} In section \ref{rel} Related work the thesis of Barbariyskiy\cite{barbanik.2014dipl} is cited, suggesting that qwerty is a good layout to use. The design will try to mimic a physical keyboard as much as possible.
+Most who use a keyboard today use it with a qwerty layout and are therefore acquainted with that style of writing\cite{p91-zhai}. The keyboard for this thesis is based on the qwerty layout, so users can take advantage of their learned way of typing. 
+In section \ref{rel} Related work the thesis of Barbariyskiy\cite{barbanik.2014dipl} is cited, suggesting that qwerty is a good layout to use. The design will try to mimic a physical keyboard as much as possible.
 
 This thesis does not however aim to determine if there is a better keyboard layout for the Leap Motion Controller or compare it with other suggested layouts. The qwerty layout may not be the most suitable for typing with the Leap Motion Controller but its wide spread makes it a good starting point when researching keyboards for three dimensional interaction. One better way of typing could be the a chord keyboard suggested in \cite{00017378}.
 
-One possible explanation for that the qwerty layout gets better result in tests is that the learning curve is less steep. Using the qwerty layout there is no need for extensive learning curve. With that in mine, an alphabetical ordered keyboard would also work, but using a layout the user is comfortable with and knows without thinking about it is a better way to go. A user that is not so comfortable with the qwerty layout will not be able to benefit from that layout being implemented with a virtual keyboard and would therefor be better of with another design. 
-
-One problem with a virtual keyboard is the feedback to the user, not everyone is used to typing without looking at there hands. To make it easier for the user and have a better chance of people using the keyboard, the aim should be to minimize the cognitive load.\cite{p91-zhai} 
+One possible explanation for that the qwerty layout gets better result in tests is that the learning curve is less steep.
+When using the qwerty layout most users will not have a extensive learning curve. 
+With that in mind, an alphabetical ordered keyboard would also work, but using a layout the user is comfortable with and knows without thinking about it is a better way to go. 
+A user that is not so comfortable with the qwerty layout will not be able to benefit from that layout being implemented with a virtual keyboard and would therefore be better of with another design. 
 
 \paragraph{Feedback}
-Without feeling (or seeing) the key under the fingers the user has to imagine a keyboard floating around in the air. Writing or even moving the hands in the mid-air lacks tactile and kinesthetic feedback. This is a big issue because writing on a keyboard depends so much on feeling the keys. Using a physical keyboard it normally requires a good tactile feedback to the user.%[?]
+One problem with a virtual keyboard is the feedback to the user, not everyone is used to typing without looking at the keyboard. 
+To make it easier for the user and have a better chance of people using the keyboard, the aim should be to minimize the cognitive load\cite{p91-zhai}.
 
-When typing in the mid-air there is a lack of tactical feedback and the user has to rely on other feedback that is provided, like visual and sound. 
+Without feeling (or seeing) the key under the fingers the user has to imagine a keyboard floating around in the air. 
+Writing or even moving the hands in the mid-air lacks tactile and kinesthetic feedback. 
+This is a big issue because writing on a keyboard depends so much on feeling the keys. 
+Using a physical keyboard it normally requires a good tactile feedback. % to the user.%[?]
+%When typing in the mid-air there is a lack of tactical feedback and the user has to rely on other feedback that is provided, like visual and sound. 
+Now, when typing the user has to rely on other feedback, like visual and sound. 
 
 %\pagebreak
 \section{Implementation} \label{impl}
@@ -442,6 +452,7 @@ The keyboard was implemented using the Leap Motion SDK in Objective-C on a MacBo
 
 The keyboard is implemented with using only the english letters, the spacebar and backspace. Because the modifier keys has been subtracted the user can only produce lower case letters.
 
+%%
 \subsection{A Keystroke}
 For each \texttt{LeapFrame} there is a list of pointables that the Leap Motion Controller has acknowledged. When the device finds a finger, it does not track all the joints in the fingers and therefore it is not possible to take advantage of the hands full potential regarding degrees of freedom. For the keyboard in this thesis the idea is that both fingers and tools could be used as input and consequently be able to make a key press. In the implementation, the \texttt{LeapPointable} class is used. 
 
