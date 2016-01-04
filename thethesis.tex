@@ -494,20 +494,24 @@ During a key press no other key can be pressed. The key is released when the poi
 To determine if and what key was pressed the pressed coordinates are compared to the key objects in the \texttt{Keyboard} class. 
 %A keyboard object consists of keys, the keys them self have their position and size.
 A keyboard object consists of keys, each key consists of their position and size.
-If the coordinate of the keystroke is placed inside a keys boundaries the key is defined as pressed. 
+If the coordinates of the keystroke are placed inside a key's boundaries the key is defined as pressed. 
 %If a key is found, the system sends a keyboard event to the operating system and if not, nothing happens.
 If a key is being pressed, the system sends a keyboard event to the operating system and if not, nothing happens. 
 
 \subsection{The keyboard} \label{leapKeyboard}
-The keyboard consists of the letters in the english alphabet ordered in the qwerty layout and two keys to help with writing, spacebar and backspace. To make it as close as possible to writing on a physical keyboard the size of the full virtual keyboard tries to adapt the size of a normal laptop keyboard. 
+The keyboard consists of the letters in the english alphabet ordered in the qwerty layout as well as two keys to help with writing, spacebar and backspace. To make it as close as possible to writing on a physical keyboard the size of the full virtual keyboard tries to adapt the size of a normal laptop keyboard. 
 
-A key consist of six variables: the position in the horizontal plane; two size variables, height and width; the \texttt{CGKeyCode}; the string that should be label on the key; and a boolean variable telling if the key is being pressed. All the keys have the same size 19 $\times$ 19 millimeter except the spacebar and backspace that have the same hight but are 114 as well as 38 millimeters wide. The padding in-between the keys is set to zero in order to help the user not to press in the margins and instead the press should resolve in a keystroke.
+A key consist of six variables: the position in the horizontal plane; two size variables, height and width; the \texttt{CGKeyCode}; the string that should be label on the key; and a boolean variable telling if the key is being pressed. All the keys have the same size 19 $\times$ 19 millimeter except the spacebar and backspace that have the same hight but are 114 as well as 38 millimeters wide. 
+%The padding in-between the keys is set to zero in order to help the user not to press in the margins and instead the press should resolve in a keystroke.
+The padding in-between the keys is set to zero in order to remove the margins and instead each press should resolve in a keystroke.
 
-The rows of keys are shifted to give it the characteristics of a keyboard \cite{website:ne:tangentbord} where the three rows with letters are shifted in descending order: 0, 5 and 15 millimeters. The spacebar key is place under the X- to M-key, and the backspace is moved closer to the letter keys and is placed to the right of the P-key. 
+The rows of keys are shifted to give it the characteristics of a keyboard\cite{website:ne:tangentbord} where the three rows of letters are shifted in descending order: 0, 5 and 15 millimeters. The spacebar key is place under the X- to M-key, and the backspace is moved closer to the letter keys and is placed to the right of the P-key. 
 
-Adjustments can be done to the window size to fit the needs of the user. It can be made really small and take almost no space on the screen and can also be extended to the full width of the screen. It is always placed on top of the desktop to be able to at all times give the user the visual feedback. A improvement would be to have the opportunity to make it transparent so the user can work on documents behind the visualization of the keyboard.
+Adjustments can be done to the window size to fit the needs of the user. It can be made really small and take almost no space on the screen and can also be extended to the full width of the screen. 
+It is always placed on top of the desktop to be able to, at all times, give the user the visual feedback. 
+A improvement would be to have the opportunity to make it transparent so the user can work on documents behind the visualization of the keyboard.
 
-Because it is a virtual keyboard other layouts and adjustments can be done to fit the users preferences, e.g. would to use Dvorak or a custom set.
+Because it is a virtual keyboard other layouts and adjustments can be done to fit the users preferences, e.g. Dvorak can be used or any other custom set.
 
 \subsection{Feedback}
 One intension of this keyboard is to give the user a sufficient feedback that helps performance when writing with the Leap Motion Controller. Typing in mid-air could be hard and the user has to rely on visual and auditory feedback. 
