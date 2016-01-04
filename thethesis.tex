@@ -454,11 +454,21 @@ The keyboard is implemented with using only the english letters, the spacebar an
 
 %%
 \subsection{A Keystroke}
-For each \texttt{LeapFrame} there is a list of pointables that the Leap Motion Controller has acknowledged. When the device finds a finger, it does not track all the joints in the fingers and therefore it is not possible to take advantage of the hands full potential regarding degrees of freedom. For the keyboard in this thesis the idea is that both fingers and tools could be used as input and consequently be able to make a key press. In the implementation, the \texttt{LeapPointable} class is used. 
+For each \texttt{LeapFrame} there is a list of pointables that the Leap Motion Controller has acknowledged. When the device finds a finger, it does not track all the joints in the fingers and therefore it is not possible to take advantage of the hands full potential regarding degrees of freedom. 
+For the keyboard in this thesis, the idea is that both fingers and tools could be used as input and consequently be able to make a key press. 
+In the implementation, the \texttt{LeapPointable} class is used. 
 
-The idea is that the user should be able to type on the keyboard at any hight in the range of the Leap Motion Controller. There should not be a certain virtual surface to touch, like a horizontal plane 200 millimeter above the device. The keystrokes are instead detected using the vertical velocity. Every pointables tip is monitored and if it exceeds a certain velocity it is considered a key press. This is done with the \texttt{tipVelocity} method in the \texttt{LeapPointable} class. 
+%The idea is that the user should be able to type on the keyboard at any hight in the range of the Leap Motion Controller.
+The user should be able to type on the keyboard at any hight in the range of the Leap Motion Controller
+There should not be a certain virtual surface to touch, like a horizontal plane 200 millimeter above the device. 
+The keystrokes are instead detected using the vertical velocity. 
+Every pointable tip is monitored and if it exceeds a certain velocity it is considered a key press. 
+This is done with the \texttt{tipVelocity} method in the \texttt{LeapPointable} class. 
 
-When typing on a keyboard it is most likely that just one key is pressed at a time. Nevertheless moving one finger in mid-air, due to the physical characteristics of the hand, makes other fingers move at the same time. To make up for this, only the fastest moving finger or tool is selected as the one doing the key press. In \cite{1596.full} they found that in the moment of the key press, in a typical case, the velocity of the fingers does not depend on the average rate of typing. 
+When typing on a keyboard it is most likely that only one key is pressed at a time. 
+Nevertheless moving one finger in mid-air, due to the physical characteristics of the hand, makes other fingers move at the same time. 
+To make up for this, only the fastest moving finger or tool is selected as the one doing the key press. 
+In \cite{1596.full} they found that in the moment of the key press, in a typical case, the velocity of the fingers does not depend on the average rate of typing. 
 
 \[
 \begin{array}{ccc}
@@ -468,15 +478,25 @@ p_{max} &=& \max \big\{ x \mid x  \in P \wedge v(x) \geq t \big\}
 
 The pointable $p_{max}$ is selected from the set $P$ of pointables with threshold $t$ and velocity function $v(x)$. If no pointable exceed the threshold the variable is set to \texttt{nil}.
 
-Measuring the velocity of the tip has the benefit that different ways of typing can be used. E.g. both writing with whole hand movements, in a drumming way, and writing with just finger movements will be detected by the application.
+Measuring the velocity of the tip has the benefit that different ways of typing can be used. 
+%E.g. both writing with whole hand movements, in a drumming way, and writing with just finger movements will be detected by the application.
+E.g. the application can be used with both whole hand movements, in a drumming way, or more commonly with just finger movements.
 
-When the threshold is exceeded the position of the finger or tool tip is registered and further movement of the finger or tool does not effect the keystrokes position in space. This will make it more accurate to the position the user wants to press. A finger gesture will not move in a straight vertical line towards the key during a keystroke. If the key press would occur at the end of the key press motion, the starting point of the movement could be above another key than the pressed key. This could have an effect in how the keyboard performs and is perceived by the user.
+When the threshold is exceeded the position of the finger or tool tip is registered and further movement of the finger or tool does not effect the keystrokes position in space. 
+This will make it more accurate to the position that the user receives as visual feedback. 
+A finger gesture will not move in a straight vertical line towards the key during a keystroke. 
+If the key press occurs at the end of the key press motion, the starting point of the movement could be above another key than the pressed key. This would have an negative effect in how the keyboard performs and is perceived by the user.
 
 This approach is some what of a naive solution where fast movements of the hand can be interpreted as keystrokes even if the intention was not to type anything. 
 
-During a key press no other key can be pressed. The key is released when the pointable velocity drops below a lower threshold. A second key press motion could begin before the first has ended.\cite{1596.full} This would make the positioning not as accurate as if the key press was registered in the key press gestures beginning.
+During a key press no other key can be pressed. The key is released when the pointable velocity drops below a lower threshold. A second key press motion could begin before the first has ended\cite{1596.full}. This would make the positioning not as accurate as if the key press was registered in the key press gestures beginning.
 
-To determine if and what key was pressed the pressed coordinates are compared to the key objects in the \texttt{Keyboard} class. A keyboard object consists of keys, the keys them self have their position and size. If the coordinate of the keystroke are placed inside a keys boundaries the key is defined as pressed. If a key is found, the system sends a keyboard event to the operating system and if not, nothing happens. 
+To determine if and what key was pressed the pressed coordinates are compared to the key objects in the \texttt{Keyboard} class. 
+%A keyboard object consists of keys, the keys them self have their position and size.
+A keyboard object consists of keys, each key consists of their position and size.
+If the coordinate of the keystroke is placed inside a keys boundaries the key is defined as pressed. 
+%If a key is found, the system sends a keyboard event to the operating system and if not, nothing happens.
+If a key is being pressed, the system sends a keyboard event to the operating system and if not, nothing happens. 
 
 \subsection{The keyboard} \label{leapKeyboard}
 The keyboard consists of the letters in the english alphabet ordered in the qwerty layout and two keys to help with writing, spacebar and backspace. To make it as close as possible to writing on a physical keyboard the size of the full virtual keyboard tries to adapt the size of a normal laptop keyboard. 
