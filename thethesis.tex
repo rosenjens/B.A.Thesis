@@ -514,16 +514,34 @@ A improvement would be to have the opportunity to make it transparent so the use
 Because it is a virtual keyboard other layouts and adjustments can be done to fit the users preferences, e.g. Dvorak can be used or any other custom set.
 
 \subsection{Feedback}
-One intension of this keyboard is to give the user a sufficient feedback that helps performance when writing with the Leap Motion Controller. Typing in mid-air could be hard and the user has to rely on visual and auditory feedback. 
+Typing in mid-air can be hard and the user has to rely on visual and auditory feedback. 
+One intension for this keyboard is to give the user sufficient feedback. 
+This should help to increase the performance when writing with the Leap Motion Controller. 
 
-Visual feedback is given to the user from the computer screen where the keys and pointables are displayed. When the Leap Motion Controller updates the \texttt{LeapFrame} the visual output through a custom \texttt{NSView} is updated. All tip positions of the LeapPointable objects in the pointable list are displayed as rectangles using the x and z coordinates. As described in the previous section \ref{leapKeyboard} The Keyboard, when the user types a letter it triggers a keyboard event to the operating system. At the same time the visual key being pressed changes colour to indicate interaction. Both the keyboard event and changed colour helps the user see what has happen.
+Visual feedback of the xz-plane is provided to the user via the computer screen, where keys and pointables are displayed.
+When the Leap Motion Controller updates the \texttt{LeapFrame}, the visual output, through a custom \texttt{NSView}, is also updated. 
+All tip positions of the LeapPointable objects in the pointable list are displayed as rectangles using their x and z coordinates. 
+As described in the previous section \ref{leapKeyboard} The Keyboard, when the user types a letter it triggers a keyboard event to the operating system. 
+At the same time the visual key being pressed changes colour to indicate interaction. 
+Both the keyboard event and changed colour helps the user understand what has happen.
 
-The auditory feedback is given when a user performs a keystroke. When a key press occurs the system plays a clicking sound to indicate the keystroke. This sound helps the user to understand that the velocity of the key press is sufficient to exceed the key press threshold. If the user does not hit a key the sound is not played. So the absence of visual and auditory feedback should indicate that no key press has occurred. An improvement of the system could be play different sounds depending on if a key was hit successfully or not.
+The auditory feedback is given when a user performs a keystroke. 
+At the same time as a key press occurs the system plays a clicking sound to indicate the keystroke. 
+This sound helps the user to understand that the velocity of the key press is sufficient to exceed the threshold. 
+If the user does not hit a key the sound is not played. 
+So the absence of visual and auditory feedback should indicate that no key press has occurred. 
 
-The absence of tactile feedback can play a key role for the development of a horizontal qwerty keyboard. Without the tactile feedback the user lacks one important component when interacting with the computer. To play a more significant role the visualization of the fingers are displayed on the screen. This having the benefit that the user does not have to look down on the keyboard to be able to see what key is to be pressed. The user can keep the eyes more stable and less flickering for the user that has to look at the keys while typing.
+The absence of tactile feedback can play an important role for the development of a horizontal qwerty keyboard. 
+Without the tactile feedback the user lacks one important component when interacting with the computer. 
+%To play a more significant role the visualization of the fingers are displayed on the screen.
+Trying to deal with this, the visualization of the fingers has gotten a more significant role than when using a regular keyboard.
+This having the benefit that the user does not have to look down on the keyboard to be able to see the keys. 
+%The user can keep the eyes more stable and less flickering for the user that has to look at the keys while typing.
+The user's focus can therefore be keep on the screen and be less distracting for user that has to look at the keys while typing.
 
 %\pagebreak
 \section{Testing and Evaluation}\label{testev}
+%%%
 First tries of the virtual keyboard shows that it is possible to use for typing and overall the functionality is that of a physical keyboard. The speed of a input device is an important aspect for the usability especially when it comes to producing text. A user does not want to use a slow system where it takes forever to type simple content. In this section the proposed keyboard is examined where the typing speed is measured using words per minute (WPM):
 
 \[
@@ -584,6 +602,9 @@ An advantage from using the Leap Motion Controller is that no training is needed
 The keyboard is not a natural way of communicating for the human it is a learnt way to interact with the computer. So when it comes to the naturalness there could be improvements on that area, where the communication is not on the term of the computer. A more natural way could be used, or at least a method that feels more natural to the user, e.g. speech. 
 
 Although the virtual qwerty keyboard is not the best way for text input, a method for typing is necessary in the progress to develop a gesture based interface.
+
+%%An improvement of the system could be play different sounds depending on if a key was hit successfully or not.
+
 
 \pagebreak
 \bibliographystyle{unsrt}
