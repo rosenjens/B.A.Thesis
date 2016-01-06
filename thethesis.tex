@@ -541,46 +541,80 @@ The user's focus can therefore be keep on the screen and be less distracting for
 
 %\pagebreak
 \section{Testing and Evaluation}\label{testev}
-%%%
-First tries of the virtual keyboard shows that it is possible to use for typing and overall the functionality is that of a physical keyboard. The speed of a input device is an important aspect for the usability especially when it comes to producing text. A user does not want to use a slow system where it takes forever to type simple content. In this section the proposed keyboard is examined where the typing speed is measured using words per minute (WPM):
+First tries shows that it is possible to use the virtual keyboard for typing. 
+Overall, the functionality is that of a physical keyboard.
 
+The speed of an input device is an important aspect for the usability, especially when it comes to producing text. 
+A user does not want to use a slow system where it takes forever to type simple content.
+%In this section the proposed keyboard is examined where the typing speed is measured using words per minute (WPM):
+In this section the proposed keyboard is examined with typing speed measured in words per minute (WPM):
 \[
 \begin{array}{ccc}
 \text{WPM} &=& \frac{\left\lvert{S}\right\vert }{t} \times 60 \times \frac{1}{5}
 \end{array}
 \]
 
-WPM is defined using the length of the set of characters written by the user, $\left\lvert{S}\right\vert$, where the time $t$ is measured in seconds. The length of a word is normalized to five characters long.
+WPM is defined using the length of the set of characters written by the user, $\left\lvert{S}\right\vert$, where the time $t$ is measured in seconds. 
+The length of a word is normalized to be five characters long.
 
-There are two types of errors that can occur when typing: corrected errors and uncorrected errors. Correcting an error effects the typing speed in a negative manner. The user has to take the time to do numerous key presses that does not effect the length of the character set, $\left\lvert{S}\right\vert$. Both error types can have a negative effecting on the rhythm of typing, where the user loses focus.\cite{1264.full} In this test the subjects was asked to correct their mistakes. 
+There are two types of errors that can occur when typing: corrected errors and uncorrected errors. 
+Correcting an error effects the typing speed in a negative manner. 
+%The user has to take the time to do a set of key presses that does not effect the length of the character set, $\left\lvert{S}\right\vert$. 
+If a character is typed by mistake, the user has to take the time to replace it without effecting the length of the character set, $\left\lvert{S}\right\vert$. 
+Both error types can have a negative effecting on the rhythm of typing, where the user loses focus\cite{1264.full}.
+In this test the subjects was asked to correct their mistakes. 
 
-WPM is used as a measure to see if the keyboard can be used at a sufficient rate. Due to limitations of the keyboard, the test is based on only writing lower case words and without special letters. The subjects in the test were native Swedish speakers so the test phrases were in Swedish using words without å, ä and ö. As shown in Table 1 the average result for using the keyboard was 14,6 WPM and a top result of 17,8 WPM.
+Due to limitations of the keyboard, the test is based on only writing lower case words and without special letters. 
+The subjects in the test were native Swedish speakers so the test phrases were in Swedish using words without å, ä and ö.
+WPM is used as a measure to see if the keyboard can be used at a sufficient rate.
+%As shown in Table 1 the average result for using the keyboard was 14,6 WPM and a top result of 17,8 WPM.
+As shown in Table 1 the average result for using the keyboard was 14,6 WPM, with a top result of 17,8 WPM.
 
 \begin{table}[htdp]
 \caption{Test result}
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
-Method & High & Low & Average  \\ 
+Method & High & Low & Average \\ 
 \hline
-Fingers & - & - & - \\
-Tools & - & - & -\\
+Fingers & 16,9 & 11,7 & 14,3 \\
+Tools & 17,8 & 12,5 & 14.9 \\
 \hline
 \hline
-Total & 17,8 & 11,7 & 14,6\\
+Total & 17,8 & 11,7 & 14,6 \\
 \hline
 \end{tabular}
 \end{center}
 \label{default}
 \end{table}
 
-The statistical result shows a quite low WPM compared to writing on a physical keyboard and could be an indication that a virtual mid-air qwerty keyboard is not the right way to go regarding mid-air typing. Concerning the performance rate of the keyboard, there may be a better way of typing in the mid-air when using a device made for gestures. This way is slow and makes it less likely that one would want to write long texts using this method, but could be used for shorter text like usernames or similar.
+%The statistical result shows a quite low WPM compared to writing on a physical keyboard and could be an indication that a virtual mid-air qwerty keyboard is not the right way to go regarding mid-air typing.
+The statistical result shows a quite low WPM compared to writing on a physical keyboard.
+This could be an indication that a virtual mid-air qwerty keyboard is not the most optimal solution regarding mid-air typing.
+%Concerning the performance rate of the keyboard, there may be a better ways of typing in the mid-air when using a device made for gestures.
+Concerning the performance rate of the keyboard, there may be better ways of typing when using a device made for gestures, such as the Leap Motion Controller.
+This way is slow and makes it less likely that one would want to write long texts using this method, but it could be used for shorter text like usernames or similar.
 
-It is difficult to write two letters that lies next to each other on the keyboard. Typing, e.g. R and E with two different fingers on each key prove to be difficult. The different lengths of the fingers makes it harder to aim two keys at the same time and it is also because the Leap Motion Controller sometimes has problems detecting all the fingers when they move close to each other. When typing on this virtual keyboard the user needs to have the fingers more straight than using a physical keyboard. This could lead to the user using more of a hunt and peck technique, a technique where the user only uses one finger on each hand to type. The test result does not take in consideration on what typing technique the subject used.
+%It is difficult to write two letters that lies next to each other on the keyboard. 
+%Typing, e.g. R and E with two different fingers on each key prove to be difficult. 
+During the test, it has shown to be difficult to write two letters that lies next to each other and that are typed with the same hand, e.g. E and R, a common occurring letter bigram. 
+%The different lengths of the fingers makes it harder to aim two keys at the same time and it is also because the Leap Motion Controller sometimes has problems detecting all the fingers when they move close to each other. 
+%When typing on this virtual keyboard the user needs to have the fingers more straight than using a physical keyboard.
+When typing on the virtual keyboard the user needs to have more straight fingers than using a physical keyboard. 
+Different lengths on fingers makes it harder to aim at two keys at the same time and to enter them after each other. 
+The Leap Motion Controller sometimes also has the problem of detecting all the fingers when they move close to each other. 
+This could lead to the user using more of a hunt and peck technique, a technique where the user only uses one finger on each hand to type. 
+The test result does not take in consideration on what typing technique the subject used.
 
-Similar to the two-fingered typing, the use of tools the motion becomes more of a drumming way of typing. Tools could be used with one in each hand or with only one tool. 
+%Similar to two-fingered typing, the use of tools the motion becomes more of a drumming way of typing. 
+Similar to two-fingered typing, when using tools as pointables, the motion becomes more of a drumming way of typing. 
+%Tools could be used with one in each hand or with only one tool.
+As seen in the result, this method of writing produces a slightly better result.
 
-Sometimes the Leap Motion system has problems when objects enters its field of view, making the keyboard perform keystrokes when it is not intended. This could be solved by disabling a hand or tool from performing key presses for the first seconds when it is recognized. Another way would be to lett the user indicate when the system can write. 
+%%%
+Sometimes the Leap Motion system has problems when objects enters its field of view, making the keyboard perform keystrokes when it is not intended. 
+This could be solved by disabling a hand or tool from performing key presses for the first seconds when it is recognized. 
+Another way would be to let the user indicate when the system can write. 
 
 A keyboard can not always be present on the screen, it would be waste of screen space and if it is active, other applications would trigger not intended keystrokes. One solutions would be that with a gesture the keyboard would start, and with another gesture close the keyboard.
 
