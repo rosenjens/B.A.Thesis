@@ -611,34 +611,80 @@ Similar to two-fingered typing, when using tools as pointables, the motion becom
 %Tools could be used with one in each hand or with only one tool.
 As seen in the result, this method of writing produces a slightly better result.
 
-%%%
-Sometimes the Leap Motion system has problems when objects enters its field of view, making the keyboard perform keystrokes when it is not intended. 
+%Sometimes the Leap Motion system has problems when objects enters its field of view, making the keyboard perform keystrokes when it is not intended. 
+On some occasions, when objects enters the Leap Motion Controller's field of view, the system makes the keyboard perform keystrokes when it is not intended.
 This could be solved by disabling a hand or tool from performing key presses for the first seconds when it is recognized. 
 Another way would be to let the user indicate when the system can write. 
 
-A keyboard can not always be present on the screen, it would be waste of screen space and if it is active, other applications would trigger not intended keystrokes. One solutions would be that with a gesture the keyboard would start, and with another gesture close the keyboard.
+A keyboard can not always be present on the screen, it would be a waste of screen space. 
+%and if it is active, other applications would trigger not intended keystrokes.
+If the keyboard is to be active all the time, other applications would trigger not intended keystrokes.
+%One solutions would be that with a gesture the keyboard would start, and with another gesture close the keyboard.
+One solutions would be to let a gesture start the keyboard, and have another gesture close the keyboard.
 
 %\pagebreak
 \section{Conclusion}
 %Can a horizontal keyboard provide sufficient writing speed?
 %Would it be possible to create a qwerty layout keyboard with the Leap Motion Controller?
 
-The aim for this thesis was to propose a horizontal qwerty keyboard for the Leap Motion Controller. One intent was to understand if sufficient data would be available for this task. The implementation is designed to mimic how a physical keyboard is used. Writing on a keyboard requires precise hand and finger movements. 
+%The aim for this thesis is to propose a horizontal qwerty keyboard for the Leap Motion Controller. 
+%Writing on a keyboard requires precise hand and finger movements.
+%Using the Leap Motion Controller, this thesis shows that it is possible to develop a mid-air keyboard under its premises. 
+ 
+%A goal was explore if sufficient data would be available when using a design that mimics a physical keyboard. 
+%The implementation is designed to mimic how a physical keyboard is used. 
+%One intent was to explore if sufficient data would be available for this task, using a design that mimics how a physical keyboard is used. 
+%The conclusion is that it is possible to develop a mid-air keyboard for the Leap Motion Controller with these premises. 
 
-The conclusion is that it is possible to develop a mid-air keyboard for the Leap Motion Controller with these premises. But this kind of keyboard may not be the most suitable for three dimensional interaction, or at least not for the Leap Motion Controller. This thesis does not aim to find the best way of typing and just because keyboards work for text entry does not mean that it is the best way to enter text. If the task is just to enter data in an effective way, e.g. writing long texts in a notepad kind of way, this keyboard is not beneficial with its low writing speed of approximately 15 WPM. 
+Writing on a keyboard requires precise hand and finger movements. 
+The result shows that it is possible to create a mid-air qwerty layout keyboard using the Leap Motion Controller. 
+An advantage when using the Leap Motion Controller is that it can be used out of the box and it does not require any hardware or other markers on the hands to be used.
+This also goes for the keyboard itself that can be used straight away. 
+A disadvantage is that it is a camera-based system and therefore it can loose sight of fingers or confuse two fingers for one.
+Background lighting can also be an issue and have a negative effect on the performance.
+%Two disadvantages are that the background lighting can have a negative effect on the performance of the device and that the cameras see from only one angle, making it possible to block fingers out of view.
+%Another advantage is that no hardware or markers are needed on the hands to interact with the device. 
+%A disadvantage is that the Leap Motion Controller uses a camera-based system and can therefore loose sight of fingers or confuse two fingers for one. 
+However, it is found that the Leap Motion Controller still can supply sufficient data to mimic the use of a physical keyboard.
 
-To imitate a physical keyboard in mid-air one disadvantage is that it lacks an important aspect of tactile feedback, and a negative consequence for this is a slower typing speed. This is a big drawback for this kind of approach, but the similarity to a physical keyboard makes it easier for users to adapt to. One can learn to use it much faster than if introduced to a completely new way of typing. An application area for this kind of keyboard would be for shorter inputs that does not require a fast typing speed to be satisfactory.
+Using this approach, the typing speed is not the fastest and can definitely not compare to writing on a physical keyboard. 
+%But, the result is good enough result for shorter inputs, e.g. a username.
+%But this kind of keyboard may not be the most suitable for three dimensional interaction, or at least not for the Leap Motion Controller. 
+If the typing speed is essential, this kind of keyboard may not be the most suitable using three dimensional interaction, or at least not for the Leap Motion Controller. 
+%This thesis does not aim to find the best way of typing and just because keyboards work for text entry does not mean that it is the best way to enter text. 
+%If the task is just to enter data in an effective way, e.g. writing long texts in a notepad kind of way, this keyboard is not beneficial with its low writing speed of approximately 15 WPM. 
+For simpler tasks, e.g. signing in using a username and password or filling in an address, the typing speed is of less importance. 
+Usually, the accuracy of the input is more important than the speed. 
+The similarity to a physical keyboard can even be an advantage for new users. 
+One can learn to use it much faster than if introduced to a completely new way of typing. 
 
-Compared to the methods for text entry with Microsoft Kinect in \cite{barbanik.2014dipl} the proposed keyboard performs quite well regarding to writing speed, where the fastest of the methods performing around 4 WPM. Garth Shoemaker et al.\cite{p231-shoemake} concludes that writing speed around 18,9 WPM for there qwerty keyboard is sufficient to writing by hand, therefor the typing speed for this project at 17,8 WPM would be in the same region.
+%This is a big drawback for this kind of approach, but the similarity to a physical keyboard makes it easier for users to adapt to. 
+%One can learn to use it much faster than if introduced to a completely new way of typing. 
 
-An advantage from using the Leap Motion Controller is that no training is needed to calibrate the system, it can be run out of the box. This also goes for the keyboard itself that can be used straight away. Another advantage is that no hardware or markers are needed on the hands to interact with the device. Two disadvantages are that the background lighting can have a negative effect on the performance of the device and that the cameras see from only one angle, making it possible to block fingers out of view.
+When using a word processor or similar to write longer texts, the low typing speed of 15 WPM is not as enjoyable to use. 
+Writing this paragraph would take more than six minutes.
+The lack of tactile feedback for the mid-air keyboard is also a disadvantage. A negative consequence of this is a decrease in typing speed. 
+The best an application area for this kind of keyboard would therefore be for shorter inputs that does not require a fast typing speed to be satisfactory.
 
-The keyboard is not a natural way of communicating for the human it is a learnt way to interact with the computer. So when it comes to the naturalness there could be improvements on that area, where the communication is not on the term of the computer. A more natural way could be used, or at least a method that feels more natural to the user, e.g. speech. 
+%To imitate a physical keyboard in mid-air one disadvantage is that it lacks an important aspect of tactile feedback, and a negative consequence for this is a slower typing speed. 
+%An application area for this kind of keyboard would be for shorter inputs that does not require a fast typing speed to be satisfactory.
+
+Compared to the methods for text entry using Microsoft Kinect in \cite{barbanik.2014dipl} the proposed Leap Motion keyboard performs quite well regarding to writing speed, where the fastest of the methods performing around 4 WPM. 
+Garth Shoemaker et al.\cite{p231-shoemake} concludes that a writing speed around 18,9 WPM for there qwerty keyboard is sufficient to writing by hand, therefore the top typing speed for this project at 17,8 WPM would be almost in the same region.
+
+%An advantage when using the Leap Motion Controller is that no training is needed to calibrate the system, it can be run out of the box. 
+%This also goes for the keyboard itself that can be used straight away. 
+%Another advantage is that no hardware or markers are needed on the hands to interact with the device. 
+%Two disadvantages are that the background lighting can have a negative effect on the performance of the device and that the cameras see from only one angle, making it possible to block fingers out of view.
+
+The keyboard is not a natural way of communicating for humans, it is a learnt way to interact with computers. 
+%So when it comes to the naturalness there could be improvements on that area, where the communication is not on the term of the computer.
+When it comes to naturalness there could be improvements. 
+A more natural way that could be used, or at least a method that feels more natural to the user, is speech. 
 
 Although the virtual qwerty keyboard is not the best way for text input, a method for typing is necessary in the progress to develop a gesture based interface.
 
 %%An improvement of the system could be play different sounds depending on if a key was hit successfully or not.
-
 
 \pagebreak
 \bibliographystyle{unsrt}
