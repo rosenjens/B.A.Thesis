@@ -25,25 +25,24 @@
 
 \section{Introduction}
 \setcounter{page}{1}
-The keyboard plays a significant role in human-computer interaction (HCI). 
+The keyboard plays a significant role in human-computer interaction. 
 Most computer users are often custom to common sets of input and output devices such as keyboard, mouse and monitor. 
-Many modern operating systems use a window icon menu pointer (WIMP) user interface. This setting a standard of how to interact with computers.%, where the keyboard and mouse are the main input devises.
+Many modern operating systems use a window icon menu pointer (WIMP) user interface. 
+This setting a standard of how to interact with computers.
 
-%The keyboard and mouse are the main input devises when using a computer.
-%When it comes to typing text the main alternative is the keyboard and it has now been a part of the human-computer interaction for a very long time, where it plays a central role.\cite{20043dui} %Nevertheless, it is not always convenient to use a physical device for inputting data.
-Typing is an essential part of human-computer interaction (HCI) and for many years the keyboard has been the main alternative for this\cite{20043dui}. 
+Typing is an essential part of human-computer interaction and for many years the keyboard has been the main alternative for this\cite{20043dui}. 
 Nevertheless, it is not always the most convenient way of inputting data. 
 Sometimes it would be rather practical to be able to type without touching a physical keyboard. 
 In this case a mid-air way of entering data can be really handy. 
 For example, while a person is cooking or baking and in the need of looking up a recipe on the computer, with grease or dough all over their hands.
 
-The keyboard plays a significant role in human-computer interaction. 
-Most computer users are often custom to common sets of input and output devices such as keyboard, mouse and monitor. 
-Many modern operating systems use a window icon menu pointer (WIMP) user interface. This setting a standard of how to interact with computers.
+%The keyboard plays a significant role in human-computer interaction. 
+%Most computer users are often custom to common sets of input and output devices such as keyboard, mouse and monitor. 
+%Many modern operating systems use a WIMP user interface. This setting a standard of how to interact with computers.
 
-%An application area from the everyday life could be while a person is cooking or baking and needs to look up a recipe on the computer, with grease or dough all over the hands.
-
-The first typewriters had keyboards with keys ordered alphabetically\cite{website:ne:tangentbord}. During the 1870's the keyboard layout for typewriters started to be dominated by the qwerty, which was developed to increase the typing speed, by considering the mechanic limitations of the early typewriters\cite{website:ne:tangentbord}. Since then the qwerty layout has been the standard and was later adapted to the computer keyboard. Some attempts has been made to change the layout (e.g. Dvorak) but none has really taken the place of qwerty.
+The first typewriters had keyboards with keys ordered alphabetically\cite{website:ne:tangentbord}. 
+During the 1870's the keyboard layout for typewriters started to be dominated by the qwerty layout, which was developed to increase the typing speed, by considering the mechanic limitations of the early typewriters\cite{website:ne:tangentbord}. 
+Since then the qwerty layout has been the standard and was later adapted to the computer keyboard. Some attempts has been made to change the layout (e.g. Dvorak) but none has really taken the place of qwerty.
 
 The aim of this report is to propose a method for horizontal text input based on the qwerty keyboard layout for the Leap Motion Controller. 
 A camera-based device that tracks your fingers and hands using infra red light.
@@ -58,14 +57,13 @@ Two questions to be answered in this thesis are:
 \pagebreak
 
 \subsection{Project Background}
-The material for this thesis comes from the company Spree AB, referred to as Spree. A problem that occurs when using the Leap Motion Controller is how to enter text without turning to a keyboard. Spree were curious if the Leap Motion Controller could be used as a keyboard and if using it as a keyboard would be sensible. As a result, there would be a need for only one input device.%One problem they came across when using the Leap Motion Controller was how to enter text when using the device without turning to the keyboard. They were curious if it could work as a keyboard, and if the idea of a keyboard would make sense.
-
-Spree's main objective is to find out in what extent the Leap Motion Controller can produce text input. They would like to get a deeper understanding in how the hands are recognized by the Leap Motion Controller and how it could be used to determine if a key is pressed or not.
+The material for this thesis comes from the company Spree AB, referred to as Spree. A problem that occurs when using the Leap Motion Controller is how to enter text without turning to a keyboard. Spree were curious if the Leap Motion Controller could be used as a keyboard and if using it as a keyboard would be sensible. As a result, there would be a need for only one input device.
+Spree's main objective is to find out in what extent the Leap Motion Controller can produce text input. 
+They would like to get a deeper understanding in how the hands are recognized by the Leap Motion Controller and how it could be used to determine if a key is pressed or not.
 
 \subsection{Limitations of project}
 This thesis does not aim to implement other keyboard types than the Swedish qwerty layout, nor does it tend to make a comparison between different keyboard types. That is, not aiming to determine if there is a better keyboard layout than a horizontal qwerty for the Leap Motion Controller or compare it with other suggested layouts. 
 
-%It would be possible for algorithms to auto correct text that has been written. But implementing or analyzing different auto-correcting techniques are outside the scope of this thesis. The study will only focus on the program to work on one operating system and will not take in to consideration that it should work on all Leap Motion Controller supported platforms.
 Data validation is a technique that is widely used for text input especially on smartphones, where spelling mistakes are corrected directly. Implementing or analyzing different algorithms for auto-correction are outside the scope of this thesis. The study will focus on one operating system when implementing the program and will not take in to consideration that it should work on all Leap Motion Controller supported platforms.
 
 \subsection{Disposition}
@@ -84,18 +82,19 @@ Then the project is tested and evaluated in Section \ref{testev}. In this sectio
 This section aims to give a foundation to the field of three dimensional interaction. Focus mainly lies on interaction where the hand is used as input, but a general idea of three dimensional input is as well presented to the reader.
 
 \subsection{Human-Computer Interaction in three dimensional space}
-%Human-Computer Interaction (HCI) defines the communication between a user and a computer system. Humans and computers do not speak the same language and therefor they need a way be able to communicate with each other. The interface in between is acting like an interpreter uniting the two. 
-Human-Computer Interaction defines the communication between a user and a computer system. Humans and computers do not communicate in the same way and therefor they need a way to be able to speak to each other. The interface in between is acting like an interpreter uniting the two.
+Human-computer interaction defines the communication between a user and a computer system. 
+Humans and computers do not communicate in the same way and therefor they need a method to be able to speak to each other. 
+The interface in between is acting like an interpreter uniting the two.
 
-%It has now for several decades been the standard that the interaction with computers mostly has been through the use of a mouse and keyboard\cite{05489218}. 
-
-When it comes to giving instructions to the computer, it has now for several decades been the standard that the interaction is done through the use of mouse and keyboard\cite{05489218}. They are designed for two dimensional input and work well with standard window icon menu pointer user interfaces, but for three dimensional input they are less suitable\cite{20043dui}. 
-%They are well suited for the window icon menu pointer system, but for humans to interact and navigate with a three dimensional environment, a mouse and keyboard can be hard to use\cite{20043dui}. 
-A more appropriate way would be to use a three dimensional user interface. That is a interface that allows the users to directly perform the interaction in three dimensional space, this could be done by using e.g. direct hand motions.
+When it comes to giving instructions to the computer, it has now for several decades been the standard that the interaction is done through the use of mouse and keyboard\cite{05489218}. 
+They are designed for two dimensional input and work well with standard WIMP user interfaces, but for three dimensional input they are less suitable\cite{20043dui}. 
+A more appropriate way would be to use a three dimensional user interface. 
+That is a interface that allows the users to directly perform the interaction in three dimensional space, this could be done by using e.g. direct hand motions.
 	
-Research on three dimensional interaction began in the 1960's\cite{20043dui}. Even if the research in this area began more than a half century ago the keyboard and mouse still has a strong position.%\cite{?}. 
+Research on three dimensional interaction began in the 1960's\cite{20043dui}. 
+%Even if the research in this area began more than a half century ago the keyboard and mouse still has a strong position.
+Even if the research in this area began more than a half century ago, keyboards and mice are still the most used devices.
 Hand motion, mentioned above, is one way of doing three dimensional interaction, nonetheless there are many researched ways of interact with computers through three dimensional space. 
-%Interacting through hand motions is one way for HCI, nonetheless it is not the only way of interact with computers through three dimensional space. 
 
 \paragraph{Degrees of freedom}
 One method of comparing three dimensional input devices is to compare the use of degrees of freedom. This is a measurement of the number of parameters that a system can use to acquire information\cite{website:ne:frihetsgrader}. A higher number indicates that more data is necessary to describe the state of the input. Examples of devices with low degree of freedom are the keyboard, mouse and joystick. 
@@ -107,7 +106,8 @@ Using a mouse to navigate in three dimensional space can be hard because the mou
 \paragraph{The human hand}
 The human hand is very complex and can be used as an advanced input device that opens up for great control of the computer. It consists of 27 bones, tendons and a large amount of muscles that allow for great flexibility\cite{website:ne:hand}. %Nationalencyklopedin, hand. http://www.ne.se/uppslagsverk/encyklopedi/lång/hand
 
-If the hand is able to move freely, it allows for a total of 29 degrees of freedom\cite{Sturman1992}. The fingers constitute 23 of the total amount and the additional six are due to rotation and translation of the hand. However, a large value does not necessary mean that the full potential needs to be used. A simpler task could take the orientation of the hand in to account, making use of only three degrees of freedom.
+If the hand is able to move freely, it allows for a total of 29 degrees of freedom\cite{Sturman1992}. The fingers constitute 23 of the total amount and the additional six are due to rotation and translation of the hand. However, a large value does not necessary mean that the full potential needs to be used. For a simpler task only the orientation of the hand could be taken in to account, making use of only three degrees of freedom.
+%A simpler task could take the orientation of the hand in to account, making use of only three degrees of freedom.
 
 %When the palm is able to move freely, the whole hand has 29 degrees of freedom\cite{Sturman1992}.
 %If the palm is able to move freely in space, there are in the whole hand 29 degrees of freedom.\cite{Sturman1992} 
@@ -116,7 +116,8 @@ If the hand is able to move freely, it allows for a total of 29 degrees of freed
 %Gestures are another way to use the hands for HCI. %Using gestures in HCI could be an more natural way of communicating with 
 
 \paragraph{Gestures and naturalness}
-Zhou Ren et al.\cite{rhgrwks} believes that hand gestures are a more natural way for humans to communicate with computers. In the way that gestures resemble more the way humans interact with each other. They use the term of a ``natural user interface'' in their paper. Others like Donald A. Norman claims, in his text \textit{Natural User Interfaces Are Not Natural}\cite{p6-norman}, that most gestures are not natural and nor are they easy to memorize, which is a negative consequence of gestures. But Norman is not all opposed towards gestures and think that they eventually will find their place in Human-computer interaction. 
+%Zhou Ren et al.\cite{rhgrwks} believes that hand gestures are a more natural way for humans to communicate with computers. 
+Zhou Ren et al.\cite{rhgrwks} believes that hand gestures can be a more natural way for humans to communicate with computers. In the way that gestures resemble more the way humans interact with each other. They use the term of a ``natural user interface'' in their paper. Others like Donald A. Norman claims, in his text \textit{Natural User Interfaces Are Not Natural}\cite{p6-norman}, that most gestures are not natural and nor are they easy to memorize, which is a negative consequence of gestures. But Norman is not all opposed towards gestures and think that they eventually will find their place in Human-computer interaction. 
 
 %The thought of naturalness is that hand movements and gestures would be more natural to the human mind. 
 %The thought of naturalness is that there are some methods that are more natural to the human mind, like hand gestures.
